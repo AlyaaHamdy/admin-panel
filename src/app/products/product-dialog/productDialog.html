@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Add Product</h1>
+<form [formGroup]="productForm" style="z-index: 1;">
+    <div mat-dialog-content>
+        <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+            <input formControlName="title" matInput placeholder="Product Name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Discription</mat-label>
+            <input formControlName="discription" matInput placeholder="discription">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="Category" placeholder="Category">
+                <mat-option value="Premium">Suppliments</mat-option>
+                <mat-option value="Standerd">Suppliments</mat-option>
+                <mat-option value="Basic">Suppliments</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>quantity</mat-label>
+            <input formControlName="quantity" matInput placeholder="quantity">
+        </mat-form-field>
+    
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Brand</mat-label>
+            <input formControlName="brand" matInput placeholder="brand">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>Image</mat-label>
+            <input formControlName="image" matInput placeholder="image">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input formControlName="price" matInput placeholder="price">
+        </mat-form-field>
+
+    </div>
+</form>
+<div mat-dialog-action [align]="'end'" >
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button style="margin-left:8px ;" color="primary" (click)="addTrainee()">{{actionBtn}}</button>
+</div>

@@ -1,0 +1,114 @@
+{
+  "traineesList": [
+    {
+      "traineeName": "Alyaa",
+      "traineeEmail": "alyaa123@gmail.com",
+      "subscription": "Basic",
+      "joinDate": "2022-10-13T22:00:00.000Z",
+      "gender": "Female",
+      "phoneNumber": 154234567,
+      "address": "aswan",
+      "comment": "This is the first trainee in our gym",
+      "id": 1
+    },
+    {
+      "traineeName": "Abanoub",
+      "traineeEmail": "abanoub1996@hotmail.com",
+      "subscription": "Standerd",
+      "joinDate": "2022-10-13T22:00:00.000Z",
+      "gender": "male",
+      "phoneNumber": 154234567,
+      "address": "aswan",
+      "comment": "This is the second subscriber",
+      "id": 2
+    },
+    {
+      "traineeName": "Mehrail",
+      "traineeEmail": "mehrail789@gmail.com",
+      "subscription": "Premium",
+      "joinDate": "2022-10-18T22:00:00.000Z",
+      "gender": "female",
+      "phoneNumber": 154234567,
+      "address": "aswan",
+      "comment": "This is third subscriber in our system",
+      "id": 3
+    },
+    {
+      "traineeName": "Ahmed",
+      "traineeEmail": "ahmed3030@gmail.com",
+      "subscription": "Basic",
+      "joinDate": "2022-10-10T22:00:00.000Z",
+      "gender": "male",
+      "phoneNumber": 154234567,
+      "address": "aswan",
+      "comment": "This is forth subscriber in our system",
+      "id": 4
+    },
+    {
+      "traineeName": "Amira",
+      "traineeEmail": "amira2022@gmail.com",
+      "subscription": "Standerd",
+      "joinDate": "2022-10-11T22:00:00.000Z",
+      "gender": "female",
+      "phoneNumber": 154234567,
+      "address": "aswan",
+      "comment": "This is fifth subscriber in our system",
+      "id": 5
+    },
+    {
+      "traineeName": "AbdAllah",
+      "traineeEmail": "abdallah456@gmail.com",
+      "subscription": "Basic",
+      "joinDate": "2022-10-13T22:00:00.000Z",
+      "gender": "male",
+      "phoneNumber": 154234567,
+      "address": "aswan",
+      "comment": "This is waldnaa",
+      "id": 9
+    },
+    {
+      "traineeName": "Ramy",
+      "traineeEmail": "ramy123@gmail.com",
+      "subscription": "Premium",
+      "joinDate": "2022-10-12T22:00:00.000Z",
+      "gender": "Male",
+      "phoneNumber": 154234567,
+      "address": "aswan",
+      "comment": "This is the admin",
+      "id": 11
+    },
+    {
+      "traineeName": "Negm",
+      "traineeEmail": "negm124@gmail.com",
+      "subscription": "Basic",
+      "joinDate": "2022-10-13T22:00:00.000Z",
+      "gender": "Male",
+      "phoneNumber": "1234567890",
+      "address": "Aswan",
+      "comment": "This is the star subscriber",
+      "id": 12
+    }
+  ],
+  "productsList": [
+    {
+      "title": "test",
+      "discription": "ttttttttttttt",
+      "Category": "Premium",
+      "quantity": "343",
+      "brand": "sdsew",
+      "image": "sewr",
+      "price": "1234",
+      "id": 1
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

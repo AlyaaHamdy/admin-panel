@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Add Trainee</h1>
+<form [formGroup]="traineeForm" style="z-index: 1;">
+    <div mat-dialog-content>
+        <mat-form-field appearance="outline">
+            <mat-label>Trainee Name</mat-label>
+            <input formControlName="traineeName" matInput placeholder="Name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Trainee Email</mat-label>
+            <input formControlName="traineeEmail" matInput placeholder="Email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Subscription</mat-label>
+            <mat-select formControlName="subscription" placeholder="Category">
+                <mat-option value="Premium">Premium</mat-option>
+                <mat-option value="Standerd">Standerd</mat-option>
+                <mat-option value="Basic">Basic</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Join Date</mat-label>
+            <input formControlName="joinDate" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    
+    
+        <label for=""><h3>Trainee Gender</h3></label>
+        <mat-radio-group formControlName="gender" class="example-radio-group">
+            <mat-radio-button class="example-radio-button" *ngFor="let gender of genderList" [value]="gender">
+                {{gender}}
+            </mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline">
+            <mat-label>phone Number</mat-label>
+            <input formControlName="phoneNumber" matInput type="text" placeholder="phoneNumber">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input formControlName="address" matInput type="text" placeholder="address">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Comment</mat-label>
+            <textarea formControlName="comment" matInput placeholder="Text"></textarea>
+        </mat-form-field>
+    </div>
+</form>
+<div mat-dialog-action [align]="'end'" >
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button style="margin-left:8px ;" color="primary" (click)="addTrainee()">{{actionBtn}}</button>
+</div>
