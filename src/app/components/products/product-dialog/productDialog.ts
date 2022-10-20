@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder , Validators } from '@angular/forms';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../../services/product.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ImageService } from 'src/app/services/image-service.service';
+import { ImageSnippet } from '../../../model/imageSnippet'
 //import { MatFormFieldModule} from '@angular/material/form-field';
 
 
@@ -14,12 +16,19 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class productDialog implements OnInit {
  actionBtn :string ="Save"
  productForm! : FormGroup; 
+
+ //selectedFile!: ImageSnippet;
+
   constructor(private formBuilder: FormBuilder,
     private api:ProductService, 
     @Inject(MAT_DIALOG_DATA) public editData:any,
-    private dialogRef:MatDialogRef<productDialog> ) {
+    private dialogRef:MatDialogRef<productDialog>,
+    //private imageService: ImageService,
+    // src: string, public file: File
+     ) {
     
    }
+   
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
@@ -44,9 +53,12 @@ export class productDialog implements OnInit {
       this.productForm.controls['price'].setValue(this.editData.price);
     }
   }
-  addTrainee(){
+  addProduct(){
+ 
     if(!this.editData){
-      if(this.productForm.valid){
+     console.log(this.productForm.valid)
+      if(this.productForm){
+        console.log("ghghgh")
         this.api.postProduct(this.productForm.value).subscribe({
           next:(res)=>{
             alert("Product added Successfully");
@@ -54,15 +66,15 @@ export class productDialog implements OnInit {
             this.dialogRef.close();
           },
           error:()=>{
-            alert("Error has occured while adding a trainee")
+            alert("Error has occured while adding a product")
           }
         })
       }
     }else{
-      this.updateTrainee()
+      this.updateProduct()
     }
   }
-  updateTrainee(){
+  updateProduct(){
     this.api.updateProduct(this.productForm.value,this.editData.id).subscribe({
       next:(res)=>{
         alert("Product updated Successfully");
@@ -74,5 +86,25 @@ export class productDialog implements OnInit {
       }
     })
   }
+
+  // processFile(imageInput: any) {
+  //   const file: File = imageInput.files[0];
+  //   const reader = new FileReader();
+
+  //   reader.addEventListener('load', (event: any) => {
+
+  //     this.selectedFile = new ImageSnippet(event.target.result, file);
+
+  //     this.imageService.uploadImage(this.selectedFile.file).subscribe(
+  //       (res) => {
+        
+  //       },
+  //       (err) => {
+        
+  //       })
+  //   });
+
+  //   reader.readAsDataURL(file);
+  // }
 
 }

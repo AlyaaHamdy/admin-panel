@@ -31,10 +31,21 @@
                 {{gender}}
             </mat-radio-button>
         </mat-radio-group>
-        <mat-form-field appearance="outline">
-            <mat-label>phone Number</mat-label>
-            <input formControlName="phoneNumber" matInput type="text" placeholder="phoneNumber">
-        </mat-form-field>
+        
+        <!-- Phone number -->
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Telephone</mat-label>
+            <span matPrefix> &nbsp;</span>
+            <input type="tel" matInput placeholder="555-555-1234"  formControlName="phoneNumber">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+
+
+
+
+
+
+
         <mat-form-field appearance="outline">
             <mat-label>Address</mat-label>
             <input formControlName="address" matInput type="text" placeholder="address">

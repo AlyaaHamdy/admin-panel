@@ -16,9 +16,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from '../app/components/header/header.component';
+import { SidenavComponent } from '../app/components/sidenav/sidenav.component';
+import { DashboardComponent } from '../app/components/dashboard/dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule} from '@angular/material/menu';
@@ -27,16 +27,16 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { HomeComponent } from './home/home.component';
-import { TrainersComponent } from './trainers/trainers.component';
-import { TraineesComponent } from './trainees/trainees.component';
-import { ExercisesComponent } from './exercises/exercises.component';
-import { ProductsComponent } from './products/products.component';
-import { OrdersComponent } from './orders/orders.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { DialogComponent } from './dialog/dialog.component';
+import { HomeComponent } from '../app/components/home/home.component';
+import { TrainersComponent } from '../app/components/trainers/trainers.component';
+import { TraineesComponent } from '../app/components/trainees/trainees.component';
+import { ExercisesComponent } from '../app/components/exercises/exercises.component';
+import { ProductsComponent } from '../app/components/products/products.component';
+import { OrdersComponent } from '../app/components/orders/orders.component';
+import { NotificationsComponent } from '../app/components/notifications/notifications.component';
+import { DialogComponent } from '../app/components/dialog/dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { productDialog } from './products/product-dialog/productDialog';
+import { productDialog } from '../app/components/products/product-dialog/productDialog';
 
 
 @NgModule({

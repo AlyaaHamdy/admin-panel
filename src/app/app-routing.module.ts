@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ExercisesComponent } from './exercises/exercises.component';
-import { HomeComponent } from './home/home.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { OrdersComponent } from './orders/orders.component';
-import { ProductsComponent } from './products/products.component';
-import { TraineesComponent } from './trainees/trainees.component';
-import { TrainersComponent } from './trainers/trainers.component';
+import { DashboardComponent } from '../app/components/dashboard/dashboard.component';
+import { ExercisesComponent } from '../app/components/exercises/exercises.component';
+import { HomeComponent } from '../app/components/home/home.component';
+import { NotificationsComponent } from '../app/components/notifications/notifications.component';
+import { OrdersComponent } from '../app/components/orders/orders.component';
+import { ProductsComponent } from '../app/components/products/products.component';
+import { TraineesComponent } from '../app/components/trainees/trainees.component';
+import { TrainersComponent } from '../app/components/trainers/trainers.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'dashboard',pathMatch:'full'},

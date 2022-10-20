@@ -12,9 +12,9 @@
         <mat-form-field appearance="outline">
             <mat-label>Category</mat-label>
             <mat-select formControlName="Category" placeholder="Category">
-                <mat-option value="Premium">Suppliments</mat-option>
-                <mat-option value="Standerd">Suppliments</mat-option>
-                <mat-option value="Basic">Suppliments</mat-option>
+                <mat-option value="Supplment">Supplment</mat-option>
+                <mat-option value="Accessory">Accessory</mat-option>
+               
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -29,11 +29,22 @@
         </mat-form-field>
 
 
-        <mat-form-field appearance="outline">
+        <!-- <mat-form-field appearance="outline">
             <mat-label>Image</mat-label>
-            <input formControlName="image" matInput placeholder="image">
-        </mat-form-field>
+            <button type="button" mat-raised-button>Choose File</button>
+            <input formControlName="image" matInput>
+        </mat-form-field> -->
 
+
+        <!-- Atest -->
+        <!-- <label class="image-upload-container btn btn-bwm">
+            <span>Select Image</span>
+            <input #imageInput
+                   type="file"
+                   accept="image/*"
+                   (change)="processFile(imageInput)">
+        </label> -->
+        
 
         <mat-form-field appearance="outline">
             <mat-label>Price</mat-label>
@@ -44,5 +55,5 @@
 </form>
 <div mat-dialog-action [align]="'end'" >
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button mat-raised-button style="margin-left:8px ;" color="primary" (click)="addTrainee()">{{actionBtn}}</button>
+    <button mat-raised-button style="margin-left:8px ;" color="primary" (click)="addProduct()">{{actionBtn}}</button>
 </div>

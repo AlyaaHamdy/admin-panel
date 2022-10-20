@@ -1,45 +1,49 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import {MatDialog,MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { productDialog } from '../products/product-dialog/productDialog';
-import { ProductService } from '../services/./product.service';
+import { DialogComponent } from '../dialog/dialog.component';
+import { ApiService } from '../../services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-trainees',
+  templateUrl: './trainees.component.html',
+  styleUrls: ['./trainees.component.scss']
 })
-export class ProductsComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'discription', 'Category', 'quantity','brand','image','price'];
-  dataSource!: MatTableDataSource<any>;
+export class TraineesComponent implements OnInit {
 
-  constructor(private dialog :MatDialog, private productServices:ProductService) { }
+  displayedColumns: string[] = ['traineeName', 'traineeEmail', 'subscription', 'joinDate','gender','phoneNumber','address','comment','action'];
+  dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  
+
+  constructor(private dialog :MatDialog, private api:ApiService) { }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    this.getAllTrainees()
   }
+
   openDialog() {
-    this.dialog.open(productDialog,{
+    this.dialog.open(DialogComponent,{
      width:'30%'
     }).afterClosed().subscribe(val=>{
       if(val==='save'){
-        this.getAllProducts();
+        this.getAllTrainees();
       }
     })
   }
-  getAllProducts(){
-    this.productServices.getProduct().subscribe({
+
+  getAllTrainees(){
+    this.api.getTrainee().subscribe({
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.productServices.getProduct();
+        this.api.getTrainee();
       },
       error:(err)=>{
         alert("Error has occured while feching the data!!! ")
@@ -47,21 +51,21 @@ export class ProductsComponent implements OnInit {
     })
 
   }
-  editProduct(row:any){
-    this.dialog.open(productDialog,{
+  editTrainee(row:any){
+    this.dialog.open(DialogComponent,{
       width:'30%',
       data:row
     }).afterClosed().subscribe(val=>{
       if(val==='update'){
-        this.getAllProducts()
+        this.getAllTrainees()
       }
     })
   }
-  deleteProduct(id:number){
-    this.productServices.deleteProduct(id).subscribe({
+  deleteTrainee(id:number){
+    this.api.deleteTrainee(id).subscribe({
       next:(res)=>{
-        alert("Product has deleted Successfully");
-        this.getAllProducts();
+        alert("Trainee has deleted Successfully");
+        this.getAllTrainees();
       },
       error:()=>{
         alert("Error has occured while deleting the data")
@@ -69,6 +73,8 @@ export class ProductsComponent implements OnInit {
     })
 
   }
+
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -77,6 +83,5 @@ export class ProductsComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
 
 }
