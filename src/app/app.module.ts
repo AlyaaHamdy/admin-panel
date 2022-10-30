@@ -37,6 +37,12 @@ import { NotificationsComponent } from '../app/components/notifications/notifica
 import { DialogComponent } from '../app/components/dialog/dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { productDialog } from '../app/components/products/product-dialog/productDialog';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { CardComponent } from './components/card/card.component';
+import { TrainersDialogComponent } from './components/trainers-dialog/trainers-dialog.component';
+import { AddProductComponent } from './components/products/add-product/add-product.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 
 @NgModule({
@@ -53,7 +59,11 @@ import { productDialog } from '../app/components/products/product-dialog/product
     OrdersComponent,
     NotificationsComponent,
     DialogComponent,
-    productDialog
+    productDialog,
+    CardComponent,
+    TrainersDialogComponent,
+    AddProductComponent,
+    LoginFormComponent
     
   ],
   imports: [
@@ -79,7 +89,9 @@ import { productDialog } from '../app/components/products/product-dialog/product
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FlexLayoutModule,
+    HighchartsChartModule
     
   ],
   providers: [],

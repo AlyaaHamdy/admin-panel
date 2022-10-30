@@ -62,7 +62,7 @@ export class TraineesComponent implements OnInit {
     })
   }
   deleteTrainee(id:number){
-    this.api.deleteTrainee(id).subscribe({
+    this.api.deleteTrainee().subscribe({
       next:(res)=>{
         alert("Trainee has deleted Successfully");
         this.getAllTrainees();

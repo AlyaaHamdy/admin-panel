@@ -1,33 +1,26 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Product } from 'src/app/model/product';
 import { ProductService } from '../../../services/product.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Product } from "../../../model/product"
-
-
 
 @Component({
-  selector: 'app-productDialog',
-  templateUrl: 'productDialog.html',
-  styleUrls: ['./productDialog.scss']
+  selector: 'app-add-product',
+  templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.scss']
 })
-export class productDialog implements OnInit {
+export class AddProductComponent implements OnInit {
   actionBtn: string = "Save"
   productForm!: FormGroup;
   isUploading: boolean = false;
-  product: Product;
+  product: Product
   Files: File[] = []
-
+  // editData:any
   constructor(private formBuilder: FormBuilder,
-    private api: ProductService,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
-    private dialogRef: MatDialogRef<productDialog>,
-    
-    // src: string, public file: File
-  ) {
+    private api: ProductService) {
     this.product = { id: 0, title: "", discription: "", price: 1, quantity: 1, brand: '', categoryId: 0, Category: "", image: null }
-
   }
+
+  // files :FileList;
   AddImages(event: any): void {
     // console.log(event.target.files)
     if (event.target.files.length > 0) {
@@ -40,6 +33,7 @@ export class productDialog implements OnInit {
       alert("upload some images")
     }
   }
+
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -51,17 +45,16 @@ export class productDialog implements OnInit {
       price: ['', Validators.required],
 
     });
-
-    if (this.editData) {
-      this.actionBtn = "Update";
-      this.productForm.controls['title'].setValue(this.editData.title);
-      this.productForm.controls['discription'].setValue(this.editData.discription);
-      this.productForm.controls['Category'].setValue(this.editData.Category);
-      this.productForm.controls['quantity'].setValue(this.editData.quantity);
-      this.productForm.controls['brand'].setValue(this.editData.brand);
-      this.productForm.controls['image'].setValue(this.editData.image);
-      this.productForm.controls['price'].setValue(this.editData.price);
-    }
+    // if (this.editData) {
+    //   this.actionBtn = "Update";
+    //   this.productForm.controls['title'].setValue(this.editData.title);
+    //   this.productForm.controls['discription'].setValue(this.editData.discription);
+    //   this.productForm.controls['Category'].setValue(this.editData.Category);
+    //   this.productForm.controls['quantity'].setValue(this.editData.quantity);
+    //   this.productForm.controls['brand'].setValue(this.editData.brand);
+    //   this.productForm.controls['image'].setValue(this.editData.image);
+    //   this.productForm.controls['price'].setValue(this.editData.price);
+    // }
   }
   addProduct() {
 
@@ -84,10 +77,7 @@ export class productDialog implements OnInit {
         this.api.postProduct(form).subscribe({
           next: (res) => {
             alert("Product added Successfully");
-            
             this.productForm.reset();
-            
-            this.dialogRef.close()
           },
           error: () => {
 
@@ -95,22 +85,22 @@ export class productDialog implements OnInit {
           }
         })
     }
-    
-    else {
-      this.updateProduct()
-    }
+    // }
+    // else {
+    //   this.updateProduct()
+    // }
   }
-  updateProduct() {
-    this.api.updateProduct(this.productForm.value).subscribe({
-      next: (res) => {
-        alert("Product updated Successfully");
-        this.productForm.reset();
-        this.dialogRef.close('update');
-      },
-      error: () => {
-        alert("Error has occured while updateing Data ")
-      }
-    })
-  }
+  // updateProduct() {
+  //   this.api.updateProduct(this.productForm.value,).subscribe({
+  //     next: (res) => {
+  //       alert("Product updated Successfully");
+  //       this.productForm.reset();
+  //       // this.dialogRef.close('update');
+  //     },
+  //     error: () => {
+  //       alert("Error has occured while updateing Data ")
+  //     }
+  //   })
+  // }
 
 }

@@ -6,7 +6,7 @@
       "subscription": "Basic",
       "joinDate": "2022-10-13T22:00:00.000Z",
       "gender": "Female",
-      "phoneNumber": 154234567,
+      "phoneNumber": "",
       "address": "aswan",
       "comment": "This is the first trainee in our gym",
       "id": 1
@@ -151,6 +151,29 @@
       "image": "",
       "price": "333",
       "id": 2
+    },
+    {
+      "title": "bottel",
+      "discription": "sssssss",
+      "Category": "Accessory",
+      "quantity": "123",
+      "brand": "ddddd",
+      "image": "",
+      "price": "22",
+      "id": 3
+    }
+  ],
+  "trainersList": [
+    {
+      "trainerName": "Alyaa",
+      "trainerEmail": "alyaa@gmail.com",
+      "subscription": "Standerd",
+      "joinDate": "2022-10-20T22:00:00.000Z",
+      "gender": "Female",
+      "phoneNumber": "4567890",
+      "address": "aaaaaa",
+      "comment": "aaaaaaaaa",
+      "id": 1
     }
   ],
   "comments": [

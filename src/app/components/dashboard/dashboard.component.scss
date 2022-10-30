@@ -2,15 +2,12 @@
   color: #ff5733;
   padding: 0 1rem;
   background: #f1f5f9;
-
   &__box {
     min-height: 120px;
     background: hsl(0deg 3% 7% / 79%);
     margin: 0 -1rem;
     font-size: 36px;
-
   }
-
   &__content {
     min-height: calc(100vh - 178px);
     border-radius: 10px;
@@ -18,38 +15,14 @@
     background: white;
     color: black;
     font-size: 2rem;
-
+    
     &-data {
-      top: 15%;
+      top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 85%;
 
     }
-
-
   }
-
 }
 
-.card-group {
-  margin-bottom: 500px;
-  padding: 30px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: nowrap !important;
-
-}
-
-.card {
-  margin: 20px;
-
-}
-
-
-.fontawesomeicon::before {
-  display: inline-block;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-}

@@ -5,7 +5,7 @@ export interface Product{
     Category:string;
     quantity:number;
     brand:string;
-    image:string;
+    image:File[]|null;
     price:number;
     categoryId:number
 }

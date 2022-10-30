@@ -66,7 +66,7 @@ export class DialogComponent implements OnInit {
     }
   }
   updateTrainee(){
-    this.api.updateTrainee(this.traineeForm.value,this.editData.id).subscribe({
+    this.api.updateTrainee(this.traineeForm.value).subscribe({
       next:(res)=>{
         alert("Trainee updated Successfully");
         this.traineeForm.reset();

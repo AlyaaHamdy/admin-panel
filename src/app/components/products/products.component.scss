@@ -1,9 +1,12 @@
 @import "../home/home.component.scss";
 
-
+.page__content-data{
+    // border: #ff5733 3px solid;
+    min-height: 60vh;
+}
 table {
     width: 100%;
-    height: 100%;
+    height: 50vh;
     position: relative;
 }
 

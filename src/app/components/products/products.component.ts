@@ -33,6 +33,8 @@ export class ProductsComponent implements OnInit {
       }
     })
   }
+
+
   getAllProducts(){
     this.productServices.getProduct().subscribe({
       next:(res)=>{
@@ -57,9 +59,15 @@ export class ProductsComponent implements OnInit {
       }
     })
   }
-  deleteProduct(id:number){
-    this.productServices.deleteProduct(id).subscribe({
+  deleteProduct(title:string){
+    this.productServices.deleteProduct(title).subscribe({
       next:(res)=>{
+
+        if("error" == res)
+        {
+        alert("Error");
+
+        }
         alert("Product has deleted Successfully");
         this.getAllProducts();
       },

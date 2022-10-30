@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Product } from '../model/product'
 
 @Injectable({
   providedIn: 'root'
@@ -8,18 +8,23 @@ import { Injectable } from '@angular/core';
 export class ProductService {
 
   constructor(private http: HttpClient) { }
-  postProduct(data:any){
-    return this.http.post<any>("http://localhost:3000/productsList/",data)
+  postProduct(form:FormData) {
+    return this.http.post<Product>("http://localhost:8000/api/v1/products/add",form)
   }
-  getProduct(){
-    return this.http.get<any>("http://localhost:3000/productsList")
-  }
-
-  updateProduct(data:any,id:number){
-    return this.http.put<any>("http://localhost:3000/productsList/"+ id,data)
+  getProduct() {
+    return this.http.get<Product[]>("http://localhost:8000/api/v1/products")
   }
 
-  deleteProduct(id:number){
-    return this.http.delete<any>("http://localhost:3000/productsList/" + id)
+  updateProduct(data: Product) {
+    return this.http.put<any>("http://localhost:8000/api/v1/products/update", data)
+  }
+
+  deleteProduct(title: string) {
+    console.log(title)
+    return this.http.delete<any>("http://localhost:8000/api/v1/products/delete", {
+      body: {
+        "title": title
+      }
+    },)
   }
 }

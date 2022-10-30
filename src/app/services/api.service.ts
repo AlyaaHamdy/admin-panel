@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -9,20 +10,20 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 
-  postTrainee(data:any){
-    return this.http.post<any>("http://localhost:3000/traineesList/",data)
+  postTrainee(data:User){
+    return this.http.post<any>("http://localhost:8000/api/v1/users/register",data)
   }
 
   getTrainee(){
-    return this.http.get<any>("http://localhost:3000/traineesList")
+    return this.http.get<User[]>("http://localhost:8000/api/v1/users/")
   }
 
-  updateTrainee(data:any,id:number){
-    return this.http.put<any>("http://localhost:3000/traineesList/"+ id,data)
+  updateTrainee(data:User){
+    return this.http.put<any>("http://localhost:8000/api/v1/users",data)
   }
 
-  deleteTrainee(id:number){
-    return this.http.delete<any>("http://localhost:3000/traineesList/" + id)
+  deleteTrainee(){
+    return this.http.delete<any>("http://localhost:8000/api/v1/users")
   }
 
 }
