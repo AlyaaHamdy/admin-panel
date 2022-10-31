@@ -21,7 +21,9 @@
             <mat-menu #menu="matMenu">
               <button mat-menu-item>
                 <mat-icon>exit_to_app</mat-icon>
-                Logout
+                <li *ngIf="islogged" class="nav-item">Logout
+                  <a class="nav-link" aria-current="page" routerLink="/logout" routerLinkActive="active"></a>
+                </li>
               </button>
             </mat-menu>
           </li>

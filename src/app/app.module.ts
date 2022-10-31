@@ -43,6 +43,10 @@ import { CardComponent } from './components/card/card.component';
 import { TrainersDialogComponent } from './components/trainers-dialog/trainers-dialog.component';
 import { AddProductComponent } from './components/products/add-product/add-product.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
@@ -63,7 +67,11 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     CardComponent,
     TrainersDialogComponent,
     AddProductComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    LogoutComponent,
+    NotFoundComponent,
+    MainLayoutComponent,
+    LoaderComponent
     
   ],
   imports: [

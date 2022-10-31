@@ -13,6 +13,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./trainees.component.scss']
 })
 export class TraineesComponent implements OnInit {
+  isloading = true;
 
   displayedColumns: string[] = ['traineeName', 'traineeEmail', 'subscription', 'joinDate','gender','phoneNumber','address','comment','action'];
   dataSource!: MatTableDataSource<any>;
@@ -24,6 +25,7 @@ export class TraineesComponent implements OnInit {
   constructor(private dialog :MatDialog, private api:ApiService) { }
 
   ngOnInit(): void {
+    this.isloading = true;
     this.getAllTrainees()
   }
 

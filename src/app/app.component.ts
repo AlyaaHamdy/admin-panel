@@ -6,13 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'AdminDashboard';
-  sideBarOpen= true
+ 
 
 
   ngOnInit(){}
 
-  sideBarToggler(){
-    this.sideBarOpen = !this.sideBarOpen;
-  }
+ 
 }

@@ -1,5 +1,6 @@
 import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AuthService } from 'src/app/services/Auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,16 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  islogged:boolean 
  @Output() toggleSidebarForMe:EventEmitter<any>= new EventEmitter();
-  constructor() { }
+  constructor(private Auth:AuthService) {
+    this.islogged = this.Auth.isLogged()
+   }
 
   ngOnInit(): void {
+    this.Auth.getLoggedStatus().subscribe((data)=>{
+      this.islogged = data
+    })
   }
 
   toggleSidebar(){
