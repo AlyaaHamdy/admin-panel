@@ -26,17 +26,25 @@ export class LoginFormComponent implements OnInit {
   }
   Login() {
     let user: AdminLogin = this.addform.value as AdminLogin
+    console.log("ddddddd")
     this.Auth.login(user).subscribe((response) => {
-      if (response.Success) {
-        this.Auth.setToken(response.Data)
-        // this.Auth.setLoggedStatus(true)
-        if (this.returnURL == '')
-          this.router.navigateByUrl("/")
-        else
-          this.router.navigateByUrl(this.returnURL)
+      console.log("ffffff")
+      if (response) {
+        console.log("lllllll")
+    
+        console.log(response.token);
+    
+      this.Auth.setToken(response.token)
+      
+        this.router.navigateByUrl("dashboard")
+        
+       
+        this.isValid = true
+     
       }
       else (
-        this.isValid = true
+        
+        this.router.navigateByUrl("/")
       )
     })
   }

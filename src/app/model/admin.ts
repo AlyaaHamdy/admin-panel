@@ -1,4 +1,12 @@
 export interface AdminLogin{
-    UserName:string;
-    Password:string
+    email:string;
+    password:string;
+    token:string;
+    role:string;
 }
+// export interface Data{
+//     email:string;
+//     password:string;
+//     token:string;
+//     role:string;
+// }

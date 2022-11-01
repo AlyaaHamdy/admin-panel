@@ -45,7 +45,7 @@ $color-wood-2: #410A09;
 /*/////////////////// scene */
 .text {
   @include centered;
-  color: rgba($color-black, 0.1);
+  color: #ff5733;
   font-size: 5em;
   text-align: center;
   top: 80%;

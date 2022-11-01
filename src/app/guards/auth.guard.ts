@@ -20,7 +20,7 @@ import { AuthService } from '../services/Auth.service';
       else{
   
         alert("you must be log in")
-        this.router.navigate(["/login",state.url])
+        this.router.navigate(["login",state])
   return false
       } 
   

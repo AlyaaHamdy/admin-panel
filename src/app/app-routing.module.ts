@@ -15,10 +15,13 @@ import { AddProductComponent } from './components/products/add-product/add-produ
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
+  // {path:'',component:Load},
 
   {path:'login',component:LoginFormComponent},
   {
-    path: 'dashboard', component: MainLayoutComponent, children: [
+    path: 'dashboard', component: MainLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'trainers', component: TrainersComponent },
@@ -30,6 +33,7 @@ const routes: Routes = [
       { path: 'add-product', component: AddProductComponent },
     ]
   },
+  
   
     
   { path: '', redirectTo: 'login', pathMatch: 'full' },

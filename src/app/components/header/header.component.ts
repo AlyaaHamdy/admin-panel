@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.Auth.getLoggedStatus().subscribe((data)=>{
-      this.islogged = data
-    })
+    // this.Auth.getLoggedStatus().subscribe((data)=>{
+    //   this.islogged = data
+    // })
   }
 
   toggleSidebar(){

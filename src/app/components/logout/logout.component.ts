@@ -16,7 +16,7 @@ export class LogoutComponent implements OnInit {
       (response)=>{
         console.log(response)
         this.Auth.removeToken()
-        this.Auth.setLoggedStatus(false)
+        // this.Auth.setLoggedStatus(false)
         this.router.navigateByUrl('/login/')
       }
     )

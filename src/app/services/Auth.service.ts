@@ -15,14 +15,9 @@ export class AuthService {
         this.logged = new BehaviorSubject<boolean>(this.isLogged())
         // this.setLoggedStatus(this.isLogged())
     }
-    // setLoggedStatus(status: boolean) {
-    //     this.logged.next(status)
-    // }
-    // getLoggedStatus() {
-    //     return this.logged.asObservable()
-    // }
+  
     login(user: AdminLogin) {
-        return this.http.post<APIResponse<string>>(`${environment.APIURl}/users/login`, user)
+        return this.http.post<AdminLogin>(`${environment.APIURl}/users/login`, user)
     }
     logout() {
 
