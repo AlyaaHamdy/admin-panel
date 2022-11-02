@@ -42,13 +42,14 @@ export class TraineesComponent implements OnInit {
   getAllTrainees(){
     this.api.getTrainee().subscribe({
       next:(res)=>{
+        console.log(res)
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.api.getTrainee();
       },
       error:(err)=>{
-        alert("Error has occured while feching the data!!! ")
+        alert("Error has occured while fetching the data!!! ")
       }
     })
 

@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'trainers', component: TrainersComponent },
       { path: 'trainees', component: TraineesComponent },
-      { path: 'exercises', component: ExercisesComponent },
+    
       { path: 'products', component: ProductsComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'notifications', component: NotificationsComponent },

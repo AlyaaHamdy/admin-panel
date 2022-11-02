@@ -15,7 +15,7 @@ export class ApiService {
   }
 
   getTrainee(){
-    return this.http.get<User[]>("http://localhost:8000/api/v1/users/")
+    return this.http.get<User[]>("http://localhost:8000/api/v1/users/client")
   }
 
   updateTrainee(data:User){

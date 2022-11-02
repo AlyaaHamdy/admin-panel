@@ -16,12 +16,15 @@ export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ['title', 'discription', 'Category', 'quantity','brand','image','price','action'];
   dataSource!: MatTableDataSource<any>;
 
+  isloading = true;
+
   constructor(private dialog :MatDialog, private productServices:ProductService) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
+    this.isloading = true;
     this.getAllProducts();
   }
   openDialog() {
