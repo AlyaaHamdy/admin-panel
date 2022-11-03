@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ImplicitReceiver } from '@angular/compiler';
+import { ImplicitReceiver } from '@angular/compiler';                
 import { Injectable } from '@angular/core';
 import {User} from '../model/user'
 
@@ -18,7 +18,11 @@ export class TrainersService {
   updateTrainer(data:User){
     return this.http.put<User>("http://localhost:8000/api/v1/users/trainer/update",data)
   }
-  deleteTrainer(data:any){
-    return this.http.delete<User>("http://localhost:8000/api/v1/users/trainer/delete"+data)
+  deleteTrainer(email:string){
+    return this.http.delete<User>("http://localhost:8000/api/v1/users/delete",{
+      body: {
+        "email": email
+      }
+    })
   }
 }

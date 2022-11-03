@@ -1,17 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
+import {AuthService}from "./Auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private auth:AuthService) { }
 
 
   postTrainee(data:User){
-    return this.http.post<any>("http://localhost:8000/api/v1/users/register",data)
+    console.log(data)
+    return this.http.post("http://localhost:8000/api/v1/users/register",data)
+    // return this.http.post<any>("http://localhost:8000/api/v1/users/register",data)
   }
 
   getTrainee(){
@@ -19,11 +22,15 @@ export class ApiService {
   }
 
   updateTrainee(data:User){
-    return this.http.put<any>("http://localhost:8000/api/v1/users",data)
+    return this.http.patch("http://localhost:8000/api/v1/users/update",data)
   }
 
-  deleteTrainee(){
-    return this.http.delete<any>("http://localhost:8000/api/v1/users")
+  deleteTrainee(email:string){
+    return this.http.delete("http://localhost:8000/api/v1/users/delete",{
+      body: {
+        "email": email
+      }
+    })
   }
 
 }

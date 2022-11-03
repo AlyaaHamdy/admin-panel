@@ -24,39 +24,51 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.traineeForm = this.formBuilder.group({
-      traineeName : ['',Validators.required],
-      traineeEmail : ['',Validators.required],
+      firstName : ['',Validators.required],
+      email : ['',Validators.required],
+      password : ['',Validators.required],
       subscription : ['',Validators.required],
-      joinDate:['',Validators.required],
+      startDate:['',Validators.required],
       gender:['',Validators.required],
       phoneNumber:['',Validators.required],
       address:['',Validators.required],
-      comment:['',Validators.required],
+      
 
     });
 
     if(this.editData){
       this.actionBtn = "Update";
-      this.traineeForm.controls['traineeName'].setValue(this.editData.traineeName);
-      this.traineeForm.controls['traineeEmail'].setValue(this.editData.traineeEmail);
+      this.traineeForm.controls['firstName'].setValue(this.editData.firstName);
+      this.traineeForm.controls['email'].setValue(this.editData.email);
+      this.traineeForm.controls['password'].setValue(this.editData.password);
       this.traineeForm.controls['subscription'].setValue(this.editData.subscription);
-      this.traineeForm.controls['joinDate'].setValue(this.editData.joinDate);
+      this.traineeForm.controls['startDate'].setValue(this.editData.startDate);
       this.traineeForm.controls['gender'].setValue(this.editData.gender);
       this.traineeForm.controls['phoneNumber'].setValue(this.editData.phoneNumber);
       this.traineeForm.controls['address'].setValue(this.editData.address);
-      this.traineeForm.controls['comment'].setValue(this.editData.comment);
+     
     }
   }
   addTrainee(){
+
     if(!this.editData){
+      console.log("gggggggg")
       if(this.traineeForm.valid){
+        console.log("fffffff")
+        console.log(this.traineeForm.value)
+        //this.api.postTrainee(this.traineeForm.value)
         this.api.postTrainee(this.traineeForm.value).subscribe({
+          
           next:(res)=>{
-            alert("Trainee added Successfully");
+            // console.log(res)
+            //alert("Trainee added Successfully");
             this.traineeForm.reset();
             this.dialogRef.close();
+            // location.reload()
+           
           },
-          error:()=>{
+          error:(err)=>{
+            console.log(err)
             alert("Error has occured while adding a trainee")
           }
         })

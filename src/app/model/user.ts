@@ -1,5 +1,4 @@
 export interface User{
-    id:number;
     email:string;
     password:string;
     profileImage:string;
@@ -10,7 +9,6 @@ export interface User{
     phoneNumber:number;
     weight:number;
     height:number;
-    trainerId:number;
     createdAt:number;
     startDate:string;
 }

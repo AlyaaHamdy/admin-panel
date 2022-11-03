@@ -1,25 +1,29 @@
 <h1 mat-dialog-title>Add Trainee</h1>
-<form [formGroup]="traineeForm" style="z-index: 1;">
+<form [formGroup]="traineeForm" style="z-index: 1;" (ngSubmit)="addTrainee()">
     <div mat-dialog-content>
         <mat-form-field appearance="outline">
             <mat-label>Trainee Name</mat-label>
-            <input formControlName="traineeName" matInput placeholder="Name">
+            <input formControlName="firstName" matInput placeholder="Name">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Trainee Email</mat-label>
-            <input formControlName="traineeEmail" matInput placeholder="Email">
+            <input formControlName="email" matInput placeholder="Email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>password</mat-label>
+            <input formControlName="password" matInput placeholder="Password">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Subscription</mat-label>
             <mat-select formControlName="subscription" placeholder="Category">
-                <mat-option value="Premium">Premium</mat-option>
-                <mat-option value="Standerd">Standerd</mat-option>
-                <mat-option value="Basic">Basic</mat-option>
+                <mat-option value="premium">Premium</mat-option>
+                <mat-option value="standard">Standerd</mat-option>
+                <mat-option value="basic">Basic</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label>Join Date</mat-label>
-            <input formControlName="joinDate" matInput [matDatepicker]="picker">
+            <mat-label>Start Date</mat-label>
+            <input formControlName="startDate" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -50,13 +54,13 @@
             <mat-label>Address</mat-label>
             <input formControlName="address" matInput type="text" placeholder="address">
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <!-- <mat-form-field appearance="outline">
             <mat-label>Comment</mat-label>
             <textarea formControlName="comment" matInput placeholder="Text"></textarea>
-        </mat-form-field>
+        </mat-form-field> -->
+    </div>
+    <div mat-dialog-action [align]="'end'" >
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        <button mat-raised-button style="margin-left:8px ;" color="primary" type="submit" >{{actionBtn}}</button>
     </div>
 </form>
-<div mat-dialog-action [align]="'end'" >
-    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button mat-raised-button style="margin-left:8px ;" color="primary" (click)="addTrainee()">{{actionBtn}}</button>
-</div>

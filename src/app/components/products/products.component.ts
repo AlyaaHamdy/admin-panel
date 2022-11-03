@@ -50,7 +50,6 @@ export class ProductsComponent implements OnInit {
         alert("Error has occured while feching the data!!! ")
       }
     })
-
   }
   editProduct(row:any){
     this.dialog.open(productDialog,{

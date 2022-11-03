@@ -47,6 +47,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { HttpIntercepters } from './services/API/httpInetcebtors';
 
 
 @NgModule({
@@ -102,7 +103,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     HighchartsChartModule
     
   ],
-  providers: [],
+  providers: [
+    HttpIntercepters
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

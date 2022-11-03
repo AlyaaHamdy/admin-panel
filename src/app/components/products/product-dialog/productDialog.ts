@@ -22,7 +22,7 @@ export class productDialog implements OnInit {
     private api: ProductService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private dialogRef: MatDialogRef<productDialog>,
-    
+
     // src: string, public file: File
   ) {
     this.product = { id: 0, title: "", discription: "", price: 1, quantity: 1, brand: '', categoryId: 0, Category: "", image: null }
@@ -69,37 +69,41 @@ export class productDialog implements OnInit {
     console.log(this.productForm.valid)
     if (this.productForm) {
       let form: FormData = new FormData()
-      for(let i = 0 ;i<this.Files.length;i++){
+      for (let i = 0; i < this.Files.length; i++) {
 
-        form.append("image", this.Files[i],  this.Files[i].name);
+        form.append("image", this.Files[i], this.Files[i].name);
       }
-        form.append("title", this.productForm.value["title"])
-        form.append("discription", this.productForm.value["discription"])
-        form.append("Category",  this.productForm.value["Category"])
-        form.append("categoryId", '0')
-        form.append("quantity", this.productForm.value["quantity"])
-        form.append("brand", this.productForm.value["brand"])
-        form.append("price", this.productForm.value["price"])
-        console.log(form.get('files'))
-        this.api.postProduct(form).subscribe({
-          next: (res) => {
-            alert("Product added Successfully");
-            
-            this.productForm.reset();
-            
-            this.dialogRef.close()
-          },
-          error: () => {
+      form.append("title", this.productForm.value["title"])
+      form.append("discription", this.productForm.value["discription"])
+      form.append("Category", this.productForm.value["Category"])
+      form.append("categoryId", '0')
+      form.append("quantity", this.productForm.value["quantity"])
+      form.append("brand", this.productForm.value["brand"])
+      form.append("price", this.productForm.value["price"])
+      console.log(form.get('files'))
+      this.api.postProduct(form).subscribe({
+        next: (res) => {
+          alert("Product added Successfully");
 
-            // alert("Error has occured while adding a product")
-          }
-        })
+          this.productForm.reset();
+
+          this.dialogRef.close();
+          // this.getAllProducts();
+        },
+        error: () => {
+
+          // alert("Error has occured while adding a product")
+        }
+      })
     }
-    
+
     else {
       this.updateProduct()
     }
   }
+  // getAllProducts() {
+  //   throw new Error('Method not implemented.');
+  // }
   updateProduct() {
     this.api.updateProduct(this.productForm.value).subscribe({
       next: (res) => {
