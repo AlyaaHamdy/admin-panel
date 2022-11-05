@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder , Validator, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { User } from 'src/app/model/user';
 
 
 
@@ -16,15 +17,18 @@ export class DialogComponent implements OnInit {
 //  subscriptionList =["premium","standerd","basic"]
  traineeForm! : FormGroup; 
   constructor(private formBuilder: FormBuilder,
+    
     private api:ApiService, 
     @Inject(MAT_DIALOG_DATA) public editData:any,
-    private dialogRef:MatDialogRef<DialogComponent> ) {
+    private dialogRef:MatDialogRef<DialogComponent>
+   ) {
     
    }
 
   ngOnInit(): void {
     this.traineeForm = this.formBuilder.group({
       firstName : ['',Validators.required],
+      lastName: ['',Validators.required],
       email : ['',Validators.required],
       password : ['',Validators.required],
       subscription : ['',Validators.required],
@@ -32,15 +36,14 @@ export class DialogComponent implements OnInit {
       gender:['',Validators.required],
       phoneNumber:['',Validators.required],
       address:['',Validators.required],
-      
-
+      endDate: ['',Validators.required],
     });
 
     if(this.editData){
       this.actionBtn = "Update";
       this.traineeForm.controls['firstName'].setValue(this.editData.firstName);
+      this.traineeForm.controls['lastName'].setValue(this.editData.lastName);
       this.traineeForm.controls['email'].setValue(this.editData.email);
-      this.traineeForm.controls['password'].setValue(this.editData.password);
       this.traineeForm.controls['subscription'].setValue(this.editData.subscription);
       this.traineeForm.controls['startDate'].setValue(this.editData.startDate);
       this.traineeForm.controls['gender'].setValue(this.editData.gender);

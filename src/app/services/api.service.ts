@@ -14,7 +14,6 @@ export class ApiService {
   postTrainee(data:User){
     console.log(data)
     return this.http.post("http://localhost:8000/api/v1/users/register",data)
-    // return this.http.post<any>("http://localhost:8000/api/v1/users/register",data)
   }
 
   getTrainee(){

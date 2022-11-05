@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,16 +14,30 @@ export class DashboardComponent implements OnInit {
   bigChart = [];
   cards = [];
 
+  code = this.http.get("http://localhost:8000/api/v1/users/attendce")
+
+
   chartOptions!: {} ;
   @Input() data: any = [];
 
   Highcharts = Highcharts;
 
-  constructor() { }
+  
 
+  constructor(private http: HttpClient) {  }
+  
   ngOnInit() {
     // this.bigChart = this.dashboardService.bigChart();
     // this.cards = this.dashboardService.cards();
+    //this.http.get("http://localhost:8000/api/v1/users/attendce")
+
+
+
+    
+
+   
+
+    
     this.chartOptions = {
       chart: {
         type: 'area'
@@ -68,6 +84,16 @@ export class DashboardComponent implements OnInit {
     }, 300);
   }
 
+ 
+
+ getGenerateCode(code:string) {
+  console.log(code)
+    return code;
+  }
+
 }
+ 
+
+
 
 

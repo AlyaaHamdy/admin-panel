@@ -5,6 +5,7 @@ import { ApiService } from '../../services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { User } from 'src/app/model/user';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class TraineesComponent implements OnInit {
   isloading = true;
 
-  displayedColumns: string[] = ['firstName', 'email', 'subscription', 'joinDate', 'gender', 'phoneNumber', 'address', 'action'];
+  displayedColumns: string[] = ['firstName', 'email', 'subscription', 'startDate', 'gender', 'phoneNumber', 'address', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -54,7 +55,6 @@ export class TraineesComponent implements OnInit {
         alert("Error has occured while fetching the data!!! ")
       }
     })
-
   }
   editTrainee(row: any) {
     this.dialog.open(DialogComponent, {
@@ -66,23 +66,19 @@ export class TraineesComponent implements OnInit {
       // }
     })
   }
+  showDetails(user:User){
+    console.log(user)
+  }
   deleteTrainee(email: string) {
     console.log(email)
     this.api.deleteTrainee(email).subscribe({
 
       next: (res) => {
-        // if ( res) {
-        //   alert("Error");
-
-        // }
-        //alert("Trainee has deleted Successfully");
+       
         location.reload()
         this.getAllTrainees();
          
       },
-      // error: () => {
-      //   alert("Error has occured while deleting the data")
-      // }
     })
 
   }

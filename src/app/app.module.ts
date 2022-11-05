@@ -48,6 +48,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpIntercepters } from './services/API/httpInetcebtors';
+import { TrainerDetailsComponent } from './components/trainer-details/trainer-details.component';
+
 
 
 @NgModule({
@@ -72,7 +74,9 @@ import { HttpIntercepters } from './services/API/httpInetcebtors';
     LogoutComponent,
     NotFoundComponent,
     MainLayoutComponent,
-    LoaderComponent
+    LoaderComponent,
+    TrainerDetailsComponent,
+  
     
   ],
   imports: [
@@ -100,7 +104,11 @@ import { HttpIntercepters } from './services/API/httpInetcebtors';
     MatPaginatorModule,
     MatSortModule,
     FlexLayoutModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+  
     
   ],
   providers: [

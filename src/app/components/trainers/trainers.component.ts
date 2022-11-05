@@ -39,8 +39,10 @@ export class TrainersComponent implements OnInit {
   }
 
   getAllTrainers() {
+    console.log( "hellooo")
     this.api.getTrainer().subscribe({
       next: (res) => {
+        console.log(res)
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

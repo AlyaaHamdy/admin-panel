@@ -24,40 +24,36 @@ trainerForm! : FormGroup;
 
   ngOnInit(): void {
     this.trainerForm = this.formBuilder.group({
-      trainerName : ['',Validators.required],
-      trainerEmail : ['',Validators.required],
-      subscription : ['',Validators.required],
-      joinDate:['',Validators.required],
+      firstName : ['',Validators.required],
+      email : ['',Validators.required],
+      startDate:['',Validators.required],
       gender:['',Validators.required],
       phoneNumber:['',Validators.required],
       address:['',Validators.required],
-      comment:['',Validators.required],
 
     });
 
     if(this.editData){
       this.actionBtn = "Update";
-      this.trainerForm.controls['trainerName'].setValue(this.editData.trainerName);
-      this.trainerForm.controls['trainerEmail'].setValue(this.editData.trainerEmail);
-      this.trainerForm.controls['subscription'].setValue(this.editData.subscription);
-      this.trainerForm.controls['joinDate'].setValue(this.editData.joinDate);
+      this.trainerForm.controls['firstName'].setValue(this.editData.firstName);
+      this.trainerForm.controls['email'].setValue(this.editData.email);
+      this.trainerForm.controls['startDate'].setValue(this.editData.startDate);
       this.trainerForm.controls['gender'].setValue(this.editData.gender);
       this.trainerForm.controls['phoneNumber'].setValue(this.editData.phoneNumber);
       this.trainerForm.controls['address'].setValue(this.editData.address);
-      this.trainerForm.controls['comment'].setValue(this.editData.comment);
     }
   }
   addTrainer(){
     if(!this.editData){
-      if(this.trainerForm){
+      if(this.trainerForm.valid){
         this.api.postTrainer(this.trainerForm.value).subscribe({
           next:(res)=>{
-            alert("Trainer added Successfully");
-            this.trainerForm.reset();
-            this.dialogRef.close();
+           // alert("Trainer added Successfully");
+           this.trainerForm.reset();
+           this.dialogRef.close();
           },
-          error:()=>{
-            alert("Error has occured while adding a trainer")
+          error:(err)=>{
+            console.log(err)
           }
         })
       }

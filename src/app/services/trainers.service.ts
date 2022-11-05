@@ -10,13 +10,14 @@ export class TrainersService {
 
   constructor(private http: HttpClient) { }
   postTrainer(data:User){
-    return this.http.post<User>("http://localhost:8000/api/v1/users/trainer/register",data)
+    console.log(data)
+    return this.http.post("http://localhost:8000/api/v1/users/register",data)
   }
   getTrainer(){
     return this.http.get<User[]>("http://localhost:8000/api/v1/users/trainer")
   }
   updateTrainer(data:User){
-    return this.http.put<User>("http://localhost:8000/api/v1/users/trainer/update",data)
+    return this.http.put<User>("http://localhost:8000/api/v1/users/update",data)
   }
   deleteTrainer(email:string){
     return this.http.delete<User>("http://localhost:8000/api/v1/users/delete",{
