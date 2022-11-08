@@ -9,6 +9,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
   postProduct(form:FormData) {
+    console.log("Product")
     return this.http.post<Product>("http://localhost:8000/api/v1/products/add",form)
   }
   getProduct() {
@@ -16,7 +17,7 @@ export class ProductService {
   }
 
   updateProduct(data: Product) {
-    return this.http.put<any>("http://localhost:8000/api/v1/products/update", data)
+    return this.http.patch("http://localhost:8000/api/v1/products/update", data)
   }
 
   deleteProduct(title: string) {

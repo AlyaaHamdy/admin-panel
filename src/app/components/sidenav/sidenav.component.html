@@ -1,25 +1,38 @@
 <mat-nav-list>
-    <div class="logo py-4 d-flex justify-content">
-        <a href="#"><img src="../../assets/logo.png"></a>
-        <span class="title"><b>GMS</b></span>
-    </div>
-    <mat-divider></mat-divider>
-    <h2 matSubheader class="mt-2">Applictions</h2>
-    
-       
+  <div class="logo py-4 d-flex justify-content">
+    <a href="#"><img src="../../assets/logo.png"></a>
+    <span class="title"><b>GMS</b></span>
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">Applictions</h2>
 
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="dashboard">
-        <mat-icon>dashboard</mat-icon> Dashboard
-      </a>
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="trainers">
-        <mat-icon>accessibility_new</mat-icon> Trainers
-      </a>
-     
-     <a  mat-list-item routerLinkActive="list-item-active" routerLink="trainees"><mat-icon>accessibility</mat-icon>Trainees</a>
 
-    <a  mat-list-item routerLinkActive="list-item-active" routerLink="products"><mat-icon>shopping_cart</mat-icon>Prouducts</a>
-    <a  mat-list-item routerLinkActive="list-item-active" routerLink="orders"><mat-icon>assignment</mat-icon>Orders</a>
-    <a  mat-list-item routerLinkActive="list-item-active" routerLink="notifications"><mat-icon>notifications_active</mat-icon>Notification</a>
-    <button mat-button color="warn"><mat-icon>launch</mat-icon>Go To WebSite</button>
-</mat-nav-list> 
 
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="trainers">
+    <mat-icon>fitness_center</mat-icon> Trainers
+  </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="trainees">
+    <mat-icon>accessibility</mat-icon>Trainees
+  </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="products">
+    <mat-icon>shopping_cart</mat-icon>Prouducts
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="orders">
+    <mat-icon>assignment</mat-icon>Orders
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="notifications">
+    <mat-icon>notifications_active</mat-icon>Notification
+  </a>
+  <h1>{{code}}</h1>
+  <button mat-button color="warn" (click)="getGenerateCode()">
+    <mat-icon>filter_center_focus</mat-icon>Today's Code
+  </button>
+  <button mat-button color="warn">
+    <mat-icon>launch</mat-icon>Go To WebSite
+  </button>
+</mat-nav-list>

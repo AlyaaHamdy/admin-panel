@@ -31,9 +31,9 @@ export class ProductsComponent implements OnInit {
     this.dialog.open(productDialog,{
      width:'30%'
     }).afterClosed().subscribe(val=>{
-      if(val==='save'){
+      
         this.getAllProducts();
-      }
+     
     })
   }
 
@@ -56,9 +56,9 @@ export class ProductsComponent implements OnInit {
       width:'30%',
       data:row
     }).afterClosed().subscribe(val=>{
-      if(val==='update'){
+      
         this.getAllProducts()
-      }
+     
     })
   }
   deleteProduct(title:string){

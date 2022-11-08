@@ -80,7 +80,7 @@ export class productDialog implements OnInit {
       form.append("quantity", this.productForm.value["quantity"])
       form.append("brand", this.productForm.value["brand"])
       form.append("price", this.productForm.value["price"])
-      console.log(form.get('files'))
+     // console.log(form.get('files'))
       this.api.postProduct(form).subscribe({
         next: (res) => {
           alert("Product added Successfully");
@@ -107,7 +107,8 @@ export class productDialog implements OnInit {
   updateProduct() {
     this.api.updateProduct(this.productForm.value).subscribe({
       next: (res) => {
-        alert("Product updated Successfully");
+        console.log(res)
+       // alert("Product updated Successfully");
         this.productForm.reset();
         this.dialogRef.close('update');
       },

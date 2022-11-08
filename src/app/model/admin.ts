@@ -1,7 +1,7 @@
 export interface AdminLogin{
     email:string;
     password:string;
-    token:string;
+    authorization:string;
     role:string;
 }
 // export interface Data{

@@ -12,3 +12,15 @@
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
   }
+  .modal-backdrop {
+    z-index: -10;
+  }
+  
+  .mat-sort-header-container {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    letter-spacing: normal;
+    outline: 0;
+    justify-content: center;
+  }

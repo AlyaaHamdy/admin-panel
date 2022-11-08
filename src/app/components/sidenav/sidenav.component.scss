@@ -58,12 +58,6 @@
 }
 
 .list-item-active {
-  // background: blue !important;
-  // border-radius: 0 2rem 2rem 0;
-  // &:hover {
-  //   background: blue;
-  // }
-
   color: #f2f5f7 !important;
 
   ::ng-deep {
@@ -83,13 +77,24 @@
   font-weight: 100;
   letter-spacing: 1px;
 }
-button{
-  margin-top: 100%;
-  color: #f2f5f7 !important ;
+
+button {
+  margin-top: 15%;
+  color: #f2f5f7 !important;
   background-color: #ff5733;
-  padding: auto  60px;
   width: 90%;
   align-self: center;
-  margin-left: 10px;
-  margin-bottom: 0;
+  margin-left: 15px;
 }
+
+h1 {
+  border: 1px solid #ff5733;
+  border-radius: 5px;
+  padding: 30px;
+  width: 90%;
+  margin-top: 5%;
+  color: #ff5733;
+  margin-left: 15px;
+  text-align: center;
+}
+

@@ -15,12 +15,12 @@ export interface User{
     bio:string;
     subscription:subscription;
     gender:gender;
-    role:role
+     role:role
 }
 
 export enum gender{
-    Male ='male',
-    Female ='female'
+    male ='male',
+    female ='female'
 }
 export enum subscription{
 

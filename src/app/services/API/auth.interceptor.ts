@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
       headers: request.headers.set('authorization', this.auth.getToken() ?? "")
     }
     )
-    console.log(res)
+   // console.log(res)
 
     return next.handle(res);
   }

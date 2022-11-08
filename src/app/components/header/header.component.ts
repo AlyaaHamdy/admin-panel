@@ -1,6 +1,9 @@
 import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/Auth.service';
+// import { WebSocketService } from '../../services/web-socket.service';
+
 
 @Component({
   selector: 'app-header',
@@ -10,7 +13,7 @@ import { AuthService } from 'src/app/services/Auth.service';
 export class HeaderComponent implements OnInit {
   islogged:boolean 
  @Output() toggleSidebarForMe:EventEmitter<any>= new EventEmitter();
-  constructor(private Auth:AuthService) {
+  constructor(private Auth:AuthService ,private router:Router) {
     this.islogged = this.Auth.isLogged()
    }
 
@@ -18,6 +21,10 @@ export class HeaderComponent implements OnInit {
     // this.Auth.getLoggedStatus().subscribe((data)=>{
     //   this.islogged = data
     // })
+    // this.WebSocketService.listen('test event').subscribe((data) => {
+    //   console.log(data);
+    // });
+    // this.WebSocketService.emit('my message', 'hello from front');
   }
 
   toggleSidebar(){
@@ -28,6 +35,11 @@ export class HeaderComponent implements OnInit {
       );
     }, 300);
 
+  }
+  logOut(){
+    console.log("Out")
+    this.Auth.removeToken();
+    this.router.navigateByUrl("login")
   }
 
 }

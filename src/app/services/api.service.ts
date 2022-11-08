@@ -21,8 +21,12 @@ export class ApiService {
   }
 
   updateTrainee(data:User){
-    return this.http.patch("http://localhost:8000/api/v1/users/update",data)
+    return this.http.patch("http://localhost:8000/api/v1/users/update_user",data)
   }
+
+  // getCode(){
+  //   return this.http.get("http://localhost:8000/api/v1/users/attendce")
+  // }
 
   deleteTrainee(email:string){
     return this.http.delete("http://localhost:8000/api/v1/users/delete",{

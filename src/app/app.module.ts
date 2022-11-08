@@ -49,6 +49,7 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpIntercepters } from './services/API/httpInetcebtors';
 import { TrainerDetailsComponent } from './components/trainer-details/trainer-details.component';
+import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
 
 
 
@@ -76,6 +77,7 @@ import { TrainerDetailsComponent } from './components/trainer-details/trainer-de
     MainLayoutComponent,
     LoaderComponent,
     TrainerDetailsComponent,
+    TraineeDetailsComponent,
   
     
   ],

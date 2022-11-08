@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/model/user';
+import { TraineeDetailsComponent } from '../trainee-details/trainee-details.component';
 
 
 @Component({
@@ -15,6 +16,11 @@ import { User } from 'src/app/model/user';
 })
 export class TraineesComponent implements OnInit {
   isloading = true;
+  userCount!:number 
+
+  user:any;
+
+  token = window.localStorage.getItem('token')
 
   displayedColumns: string[] = ['firstName', 'email', 'subscription', 'startDate', 'gender', 'phoneNumber', 'address', 'action'];
   dataSource!: MatTableDataSource<any>;
@@ -59,15 +65,23 @@ export class TraineesComponent implements OnInit {
   editTrainee(row: any) {
     this.dialog.open(DialogComponent, {
       width: '30%',
-      data: row
+      data: row,
+    
+      
     }).afterClosed().subscribe(val => {
+      this.token
       // if (val === 'update') {
         this.getAllTrainees()
       // }
     })
   }
-  showDetails(user:User){
+  showDetails(user:any){
     console.log(user)
+    const dialogRef = this.dialog.open(TraineeDetailsComponent,{width: '50%'});
+
+    dialogRef.afterClosed().subscribe(user => {
+      console.log(`Dialog result: ${user}`);
+    });
   }
   deleteTrainee(email: string) {
     console.log(email)
@@ -91,6 +105,11 @@ export class TraineesComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  showuser(user:any){
+    this.user = user
+
   }
 
 }

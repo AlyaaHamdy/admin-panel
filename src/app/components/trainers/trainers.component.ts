@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit,ViewChild } from '@angular/core';
+import {MatDialog,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { TrainersDialogComponent } from '../trainers-dialog/trainers-dialog.component';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 import { TrainersService } from 'src/app/services/trainers.service';
-import { title } from 'process';
+import { User } from 'src/app/model/user';
 
 
 @Component({
@@ -15,61 +15,64 @@ import { title } from 'process';
 })
 export class TrainersComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstName', 'email', 'startDate', 'gender', 'phoneNumber', 'address', 'action'];
-  dataSource!: MatTableDataSource<any>;
+  displayedColumns: string[] = ['firstName', 'email', 'startDate','gender','phoneNumber','address','action'];
+  dataSource!: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  isloading = true;
+  
 
-
-  constructor(private dialog: MatDialog, private api: TrainersService) { }
+  constructor(private dialog :MatDialog, private api:TrainersService) { }
 
   ngOnInit(): void {
+    this.isloading = true;
     this.getAllTrainers()
   }
 
   openDialog() {
-    this.dialog.open(TrainersDialogComponent, {
-      width: '30%'
-    }).afterClosed().subscribe(val => {
-     
+    this.dialog.open(TrainersDialogComponent,{
+     width:'30%'
+    }).afterClosed().subscribe(val=>{
+      console.log("done")
+      //if(val==='save'){
         this.getAllTrainers();
-      
+      //}
     })
   }
 
-  getAllTrainers() {
-    console.log( "hellooo")
+  getAllTrainers(){
     this.api.getTrainer().subscribe({
-      next: (res) => {
+      next:(res)=>{
         console.log(res)
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.api.getTrainer();
       },
-      error: (err) => {
-        console.log("Error has occured while feching the data!!! ")
+      error:(err)=>{
+        alert("Error has occured while feching the data!!! ")
       }
     })
+
   }
-  editTrainer(row: any) {
-    this.dialog.open(TrainersDialogComponent, {
-      width: '30%',
-      data: row
-    }).afterClosed().subscribe(val => {
-      if (val === 'update') {
+  editTrainer(row:any){
+    this.dialog.open(TrainersDialogComponent,{
+      width:'30%',
+      data:row
+    }).afterClosed().subscribe(val=>{
+      //if(val==='update'){
         this.getAllTrainers()
-      }
+      //}
     })
   }
-  deleteTrainer(email:string) {
+  deleteTrainer(email:string){
     this.api.deleteTrainer(email).subscribe({
-      next: (res) => {
+      next:(res)=>{
         alert("Trainer has deleted Successfully");
         this.getAllTrainers();
       },
-      error: () => {
+      error:()=>{
         alert("Error has occured while deleting the data")
       }
     })

@@ -14,6 +14,7 @@ export class LoginFormComponent implements OnInit {
   isValid = false;
 
   returnURL: string = "";
+display: string ="none";
   constructor(private router: Router, private activate: ActivatedRoute, private Auth: AuthService) {
     this.addform = new FormGroup({
       email: new FormControl("", [Validators.required]),
@@ -28,13 +29,19 @@ export class LoginFormComponent implements OnInit {
     let user: AdminLogin = this.addform.value as AdminLogin
     console.log("ddddddd")
     this.Auth.login(user).subscribe((response) => {
-      console.log("ffffff")
+     // console.log(response)
       if (response) {
+
         console.log("lllllll")
     
-        console.log(response.token);
+        console.log(response.authorization);
+
+        if(response.authorization== ''){
+          console.log("errrror");
+          this.display = "block";
+        }
     
-      this.Auth.setToken(response.token)
+      this.Auth.setToken(response.authorization)
       
         this.router.navigateByUrl("dashboard")
         
@@ -42,10 +49,12 @@ export class LoginFormComponent implements OnInit {
         this.isValid = true
      
       }
-      else (
-        
+      else{
+       
         this.router.navigateByUrl("/")
-      )
+      }
+        
+      
     })
   }
 

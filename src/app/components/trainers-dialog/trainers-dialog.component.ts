@@ -11,7 +11,7 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./trainers-dialog.component.scss']
 })
 export class TrainersDialogComponent implements OnInit {
- genderList = ["Male","Female"];
+ genderList = ["male","female"];
  actionBtn :string ="Save"
 //  subscriptionList =["premium","standerd","basic"]
 trainerForm! : FormGroup; 
@@ -26,6 +26,7 @@ trainerForm! : FormGroup;
     this.trainerForm = this.formBuilder.group({
       firstName : ['',Validators.required],
       email : ['',Validators.required],
+      password : ['',Validators.required],
       startDate:['',Validators.required],
       gender:['',Validators.required],
       phoneNumber:['',Validators.required],
@@ -45,12 +46,14 @@ trainerForm! : FormGroup;
   }
   addTrainer(){
     if(!this.editData){
+      console.log(this.trainerForm.valid)
       if(this.trainerForm.valid){
         this.api.postTrainer(this.trainerForm.value).subscribe({
           next:(res)=>{
            // alert("Trainer added Successfully");
            this.trainerForm.reset();
            this.dialogRef.close();
+           
           },
           error:(err)=>{
             console.log(err)

@@ -3,6 +3,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Attendence } from 'src/app/model/attendence';
+import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -13,31 +16,44 @@ export class DashboardComponent implements OnInit {
 
   bigChart = [];
   cards = [];
+  userCount!:number
+  code: string = "Click to generate Code!!";
 
-  code = this.http.get("http://localhost:8000/api/v1/users/attendce")
 
-
-  chartOptions!: {} ;
+  chartOptions!: {};
   @Input() data: any = [];
 
   Highcharts = Highcharts;
+  total: any;
+  label: any;
+  percentage: any;
 
-  
 
-  constructor(private http: HttpClient) {  }
-  
+
+  constructor(private api:ApiService,private http :HttpClient) { }
+
   ngOnInit() {
-    // this.bigChart = this.dashboardService.bigChart();
-    // this.cards = this.dashboardService.cards();
-    //this.http.get("http://localhost:8000/api/v1/users/attendce")
+    this.api.getTrainee().subscribe({
+      next:(res)=>{
+        this.userCount = res.length
+        //console.log(this.userCount)
+      },
+      error:(err)=>{
+       // console.log(err)
+      }
+    })
 
 
-
-    
-
-   
-
-    
+    this.http.get<any>("http://localhost:8000/api/v1/users/allattendance").subscribe({
+      next: (res) => {
+        //this.code= res.code
+        console.log(res)
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  
     this.chartOptions = {
       chart: {
         type: 'area'
@@ -50,7 +66,7 @@ export class DashboardComponent implements OnInit {
       },
       tooltip: {
         split: true,
-        valueSuffix: ' millions'
+        // valueSuffix: ' millions'
       },
       credits: {
         enabled: false
@@ -60,19 +76,19 @@ export class DashboardComponent implements OnInit {
       },
       series: [{
         name: 'New Users',
-        data: [13234, 12729, 11533, 17798, 10398, 12811, 15483, 16196, 16214]
-    }, {
+        data: this.userCount 
+      }, {
         name: 'Revenue',
-        data: [6685, 6535, 6389, 6384, 6251, 5725, 5631, 5047, 5039]
+        data:  [10, 20, 30, 40]
 
-    }, {
-        name: 'Users engagement',
-        data: [4752, 4820, 4877, 4925, 5006, 4976, 4946, 4911, 4913]
-    }, {
-        name: 'Referral',
-        data: [3164, 3541, 3898, 4115, 3388, 3569, 3887, 4593, 1550]
+      }, {
+        name: 'Trainers',
+        data:  [10, 20, 30, 40]
+      }, {
+        name: 'Orders',
+        data: [10, 20, 30, 40]
 
-    }]
+      }]
     };
 
     HC_exporting(Highcharts);
@@ -84,15 +100,10 @@ export class DashboardComponent implements OnInit {
     }, 300);
   }
 
- 
 
- getGenerateCode(code:string) {
-  console.log(code)
-    return code;
-  }
+
 
 }
- 
 
 
 

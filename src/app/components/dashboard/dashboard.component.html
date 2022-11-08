@@ -2,28 +2,9 @@
   <div class="d-flex page__box p-3 mt-2">Dashboard</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data position-absolute text-center">
-      <!-- <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
-    style="width: 100%; height: 100%; display: block;"></highcharts-chart>
-    <br> -->
-    <h1>{{code}}</h1>
-    <button onclick="getGenerateCode(code)">click me</button>
+      <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+        style="width: 100%; height: 100%; display: block;"></highcharts-chart>
 
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-    <mat-card fxFlex="25">
-        <app-card label="New Users" total="12k" percentage="50" [data]="cards"></app-card>
-    </mat-card>
-    <mat-card fxFlex="25">
-        <app-card label="Revenue" total="10k" percentage="40" [data]="cards"></app-card>
-    </mat-card>
-    <mat-card fxFlex="25">
-        <app-card label="Users engagement" total="8k" percentage="30" [data]="cards"></app-card>
-    </mat-card>
-    <mat-card fxFlex="25">
-        <app-card label="Referral" total="6k" percentage="20" [data]="cards"></app-card>
-    </mat-card>
-</div>
-
-<br>
     </div>
   </div>
 </div>

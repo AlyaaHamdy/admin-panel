@@ -12,7 +12,7 @@ import { User } from 'src/app/model/user';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
- genderList = ["Male","Female"];
+ genderList = ["male","female"];
  actionBtn :string ="Save"
 //  subscriptionList =["premium","standerd","basic"]
  traineeForm! : FormGroup; 
@@ -28,7 +28,7 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
     this.traineeForm = this.formBuilder.group({
       firstName : ['',Validators.required],
-      lastName: ['',Validators.required],
+    //  lastName: ['',Validators.required],
       email : ['',Validators.required],
       password : ['',Validators.required],
       subscription : ['',Validators.required],
@@ -36,13 +36,13 @@ export class DialogComponent implements OnInit {
       gender:['',Validators.required],
       phoneNumber:['',Validators.required],
       address:['',Validators.required],
-      endDate: ['',Validators.required],
+     // endDate: ['',Validators.required],
     });
 
     if(this.editData){
       this.actionBtn = "Update";
       this.traineeForm.controls['firstName'].setValue(this.editData.firstName);
-      this.traineeForm.controls['lastName'].setValue(this.editData.lastName);
+      //this.traineeForm.controls['lastName'].setValue(this.editData.lastName);
       this.traineeForm.controls['email'].setValue(this.editData.email);
       this.traineeForm.controls['subscription'].setValue(this.editData.subscription);
       this.traineeForm.controls['startDate'].setValue(this.editData.startDate);
@@ -55,11 +55,12 @@ export class DialogComponent implements OnInit {
   addTrainee(){
 
     if(!this.editData){
+      console.log(this.traineeForm.value)
+      console.log(this.traineeForm.valid)
       console.log("gggggggg")
       if(this.traineeForm.valid){
         console.log("fffffff")
-        console.log(this.traineeForm.value)
-        //this.api.postTrainee(this.traineeForm.value)
+       
         this.api.postTrainee(this.traineeForm.value).subscribe({
           
           next:(res)=>{
@@ -83,7 +84,8 @@ export class DialogComponent implements OnInit {
   updateTrainee(){
     this.api.updateTrainee(this.traineeForm.value).subscribe({
       next:(res)=>{
-        alert("Trainee updated Successfully");
+        console.log(res)
+        // alert("Trainee updated Successfully");
         this.traineeForm.reset();
         this.dialogRef.close('update');
       },
