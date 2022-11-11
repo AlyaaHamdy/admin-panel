@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/Auth.service';
 
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -28,33 +29,28 @@ display: string ="none";
   Login() {
     let user: AdminLogin = this.addform.value as AdminLogin
     console.log("ddddddd")
-    this.Auth.login(user).subscribe((response) => {
-     // console.log(response)
-      if (response) {
-
-        console.log("lllllll")
-    
-        console.log(response.authorization);
-
-        if(response.authorization== ''){
-          console.log("errrror");
-          this.display = "block";
-        }
-    
-      this.Auth.setToken(response.authorization)
-      
-        this.router.navigateByUrl("dashboard")
+    this.Auth.login(user).subscribe({
+      next:(response) => {
+        // console.log(response)
+         if (response) {
+         this.Auth.setToken(response.authorization)
+         
+           this.router.navigateByUrl("dashboard")
+           
+          
+           this.isValid = true
         
-       
-        this.isValid = true
-     
-      }
-      else{
-       
-        this.router.navigateByUrl("/")
-      }
-        
-      
+         }
+         else{
+          
+           this.router.navigateByUrl("/")
+         }
+           
+        },
+        error:(err)=>{
+          console.log(err);
+          this.display = "block"
+        }    
     })
   }
 

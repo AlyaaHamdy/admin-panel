@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ApiService } from 'src/app/services/api.service';
 import {User} from '../../model/user'
 
 @Component({
@@ -12,22 +14,14 @@ export class TraineeDetailsComponent implements OnInit {
  
   
 
-  constructor(private formBuilder: FormBuilder,) { }
+  constructor( private api:ApiService, 
+    @Inject(MAT_DIALOG_DATA) public user:any) { }
   
-  User!: User;
+ 
   ngOnInit(): void {
-    this.traineeForm = this.formBuilder.group({
-      firstName : ['',Validators.required],
-      lastName: ['',Validators.required],
-      email : ['',Validators.required],
-      password : ['',Validators.required],
-      subscription : ['',Validators.required],
-      startDate:['',Validators.required],
-      gender:['',Validators.required],
-      phoneNumber:['',Validators.required],
-      address:['',Validators.required],
-      endDate: ['',Validators.required],
-    });
+    
+ 
+    console.log(this.user)
   }
 
 }

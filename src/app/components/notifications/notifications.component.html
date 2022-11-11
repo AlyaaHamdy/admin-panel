@@ -1,8 +1,79 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Notification</div>
+    <div class="d-flex page__box p-3 mt-2">Orders</div>
     <div class="page__content shadow p-3 position-relative">
-        <div class="page__content-data position-absolute text-center">
-            Notification Content Goes Here
+      <div class="page__content-data position-absolute text-center">
+        
+        <div class="mat-elevation-z8" style="margin-top: 10px">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            matSort
+            style="width: 100%; text-align: center"
+          >
+            <!-- Product Name Column -->
+            <ng-container matColumnDef="Message">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: inherit;
+                "
+              >
+                Notification Message
+              </th>
+              <td mat-cell *matCellDef="let row">{{ row.notificationMsg }}</td>
+            </ng-container>
+  
+            <!-- Product discription Column -->
+            <ng-container matColumnDef="SenderEmail">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Sender Email
+              </th>
+              <td mat-cell *matCellDef="let row">{{ row.notificationSender }}</td>
+            </ng-container>
+  
+            <!---- Product image column ---->
+            <ng-container matColumnDef="Date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Notification Date
+              </th>
+              <!-- <td mat-cell *matCellDef="let row">
+                <span *ngFor="let item of row.items; let i = index"
+                  >{{ i + 1 }} - item with price {{ item.price }}
+                  <br />
+                </span>
+              </td> -->
+              <td mat-cell *matCellDef="let row">{{ row.notificationDate }}</td>
+            </ng-container>
+  
+            <!-----Action Column ---->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+  
+              <td mat-cell *matCellDef="let row"></td>
+            </ng-container>
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+            <!-- Row shown when there is no matching data. -->
+            <!-- <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">
+                  No data matching the filter "{{ input.value }}"
+                </td>
+              </tr> -->
+          </table>
+  
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page of users"
+          ></mat-paginator>
         </div>
+      </div>
     </div>
   </div>
+  

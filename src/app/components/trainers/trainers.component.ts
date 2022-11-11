@@ -6,6 +6,8 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { TrainersService } from 'src/app/services/trainers.service';
 import { User } from 'src/app/model/user';
+import { TrainerDetailsComponent } from '../trainer-details/trainer-details.component';
+import { AssignedTraineeComponent } from '../assigned-trainee/assigned-trainee.component';
 
 
 @Component({
@@ -15,7 +17,7 @@ import { User } from 'src/app/model/user';
 })
 export class TrainersComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstName', 'email', 'startDate','gender','phoneNumber','address','action'];
+  displayedColumns: string[] = ['firstName', 'startDate','phoneNumber','action'];
   dataSource!: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -66,6 +68,7 @@ export class TrainersComponent implements OnInit {
       //}
     })
   }
+  
   deleteTrainer(email:string){
     this.api.deleteTrainer(email).subscribe({
       next:(res)=>{
@@ -77,6 +80,20 @@ export class TrainersComponent implements OnInit {
       }
     })
 
+  }
+  assignedTrainee(trainer:any){
+    const dialogRef = this.dialog.open(AssignedTraineeComponent,{data:trainer});
+    dialogRef.afterClosed().subscribe(user => {
+      //console.log(`Dialog result: ${user}`);
+    });
+  }
+  showDetails(user:any):any{
+    console.log(user)
+    const dialogRef = this.dialog.open(TrainerDetailsComponent,{ width: '0',height:'0',data:user});
+
+    dialogRef.afterClosed().subscribe(user => {
+      //console.log(`Dialog result: ${user}`);
+    });
   }
 
 

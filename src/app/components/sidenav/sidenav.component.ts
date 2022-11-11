@@ -8,7 +8,7 @@ import { Attendence } from 'src/app/model/attendence';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  code: string ="Click to generate Code!!";
+  code: string ="Code!!";
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -18,7 +18,7 @@ export class SidenavComponent implements OnInit {
         this.code= res.code
         //console.log(res)
        }else{
-        alert("Generate Your Code")
+        // alert("Generate Your Code")
        }
       },
       error: (err) => {

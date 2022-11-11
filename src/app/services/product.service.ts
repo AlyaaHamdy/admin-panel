@@ -16,7 +16,7 @@ export class ProductService {
     return this.http.get<Product[]>("http://localhost:8000/api/v1/products")
   }
 
-  updateProduct(data: Product) {
+  updateProduct(data: FormData) {
     return this.http.patch("http://localhost:8000/api/v1/products/update", data)
   }
 

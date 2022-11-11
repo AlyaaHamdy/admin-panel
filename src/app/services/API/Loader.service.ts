@@ -1,18 +1,16 @@
 import { Injectable } from "@angular/core";
-import { retry, Subject } from "rxjs";
+import { BehaviorSubject, retry, Subject } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
   })
   export class LoaderService {
-    isloading:Subject<boolean>;
+    isloading= new BehaviorSubject<boolean>(true);
     constructor(){
-        this.isloading = new Subject<boolean>();
-
     }
-    // getLoader(){
-    //     return this.isloading
-    // }
+    getLoader(){
+        return this.isloading.asObservable()
+    }
     Show(){
         this.isloading.next(true)
     }

@@ -1,1 +1,37 @@
-<p>trainer-details works!</p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="wrapper">
+  <div class="container">
+    <!-- <img src={{user.profileImage}}  class="profile-img"> -->
+    <img src="https://i.imgur.com/fR2RIvG.jpg" alt="" class="profile-img">
+    
+    <div class="content">
+      <div class="sub-content">
+        <h1>{{user.firstName}}</h1>
+        <span>{{user.gender}}</span>
+        <p>{{user.role}}</p>
+        <span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>{{user.address}}</span>
+        <a href="">{{user.email}}</a>
+      </div>
+      <!-- <div class="data">
+        <div class="inner-data">
+          <span><i class="fa fa-users" aria-hidden="true"></i></span>
+          <p>11M</p>
+        </div>
+        <div class="inner-data">
+          <span><i class="fa fa-twitter-square" aria-hidden="true"></i></span>
+          <p>1,470</p>
+        </div>
+        <div class="inner-data">
+          <span><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+          <p>80</p>
+        </div>
+      </div> -->
+
+      <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Close</button>
+      </mat-dialog-actions>
+      
+    </div>
+  </div>
+</div>

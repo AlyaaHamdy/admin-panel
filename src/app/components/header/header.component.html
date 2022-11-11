@@ -4,7 +4,42 @@
         <mat-icon>menu</mat-icon>
       </button>
       <div class="row mr-2 ml-auto">
-        <ul class="row m-0 align-items-center">
+        <ul class="m-0 position-relative d-flex align-items-center justify-content-center">
+          <span
+          class="position-absolute"
+          style="right: 12rem; top: -0.2rem; font-size: 22px"
+          [ngStyle]="{ display: display }"
+          >{{ notfyList.length }}</span
+        >
+        <li>
+          <div class="dropdown" (click)="hide()">
+            <!-- <i class="" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </i> -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21"
+              height="21"
+              fill="#ff5733"
+              class="bi bi-bell-fill dropdown-toggle"
+              viewBox="0 0 16 16"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <path
+                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"
+              />
+            </svg>
+            <!-- <i class="bi bi-bell"></i> -->
+            <ul class="dropdown-menu">
+              <li *ngFor="let item of notfyList">
+                <h4 style="font-size: medium" class="dropdown-item">
+                  {{ item }}
+                </h4>
+              </li>
+            </ul>
+          </div>
+        </li>
           <li>
             <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
               <!-- <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon> -->

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-
 import { MatSortModule} from '@angular/material/sort';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableModule} from '@angular/material/table';
@@ -50,6 +49,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { HttpIntercepters } from './services/API/httpInetcebtors';
 import { TrainerDetailsComponent } from './components/trainer-details/trainer-details.component';
 import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { AssignedTraineeComponent } from './components/assigned-trainee/assigned-trainee.component';
 
 
 
@@ -78,6 +79,8 @@ import { TraineeDetailsComponent } from './components/trainee-details/trainee-de
     LoaderComponent,
     TrainerDetailsComponent,
     TraineeDetailsComponent,
+    ProductDetailsComponent,
+    AssignedTraineeComponent,
   
     
   ],

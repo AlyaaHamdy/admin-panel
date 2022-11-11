@@ -27,12 +27,13 @@
 	position: absolute;
     top: 30%;
     left: 40%;
+	background-color: orangered;
 }
 
 
 
 .box p {
-	color: #777;
+	//color: #777;
 	font-family: Lato, "Helvetica Neue";
 	font-weight: 300;
 	position: absolute;
@@ -87,7 +88,7 @@
 	}
 
 	.box:nth-child(2n-1) {
-		background-color: rgba(0, 0, 0, 0.05);
+		//background-color: rgba(0, 0, 0, 0.05);
 	}
 
 }
@@ -96,7 +97,7 @@
 
 .clock {
 	border-radius: 60px;
-	border: 3px solid #fff;
+	border: 3px solid #ff5733;
 	height: 80px;
 	width: 80px;
 	position: relative;
@@ -112,7 +113,7 @@
 .clock:after {
 	content: "";
 	position: absolute;
-	background-color: #fff;
+	background-color: #ff5733;
 	top: 2px;
 	left: 48%;
 	height: 38px;
@@ -147,7 +148,7 @@
 .clock:before {
 	content: "";
 	position: absolute;
-	background-color: #fff;
+	background-color: #ff5733;
 	top: 6px;
 	left: 48%;
 	height: 35px;

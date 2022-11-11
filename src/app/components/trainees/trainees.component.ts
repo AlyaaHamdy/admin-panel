@@ -22,7 +22,7 @@ export class TraineesComponent implements OnInit {
 
   token = window.localStorage.getItem('token')
 
-  displayedColumns: string[] = ['firstName', 'email', 'subscription', 'startDate', 'gender', 'phoneNumber', 'address', 'action'];
+  displayedColumns: string[] = ['firstName', 'subscription', 'startDate', 'phoneNumber', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -70,17 +70,16 @@ export class TraineesComponent implements OnInit {
       
     }).afterClosed().subscribe(val => {
       this.token
-      // if (val === 'update') {
         this.getAllTrainees()
-      // }
+   
     })
   }
-  showDetails(user:any){
+  showDetails(user:any):any{
     console.log(user)
-    const dialogRef = this.dialog.open(TraineeDetailsComponent,{width: '50%'});
+    const dialogRef = this.dialog.open(TraineeDetailsComponent,{ width: '0',height:'0',data:user});
 
     dialogRef.afterClosed().subscribe(user => {
-      console.log(`Dialog result: ${user}`);
+      //console.log(`Dialog result: ${user}`);
     });
   }
   deleteTrainee(email: string) {
@@ -96,6 +95,7 @@ export class TraineesComponent implements OnInit {
     })
 
   }
+
 
 
   applyFilter(event: Event) {

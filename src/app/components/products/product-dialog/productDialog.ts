@@ -16,7 +16,8 @@ export class productDialog implements OnInit {
   productForm!: FormGroup;
   isUploading: boolean = false;
   product: Product;
-  Files: File[] = []
+  Files: File[] = [];
+  display:string = "none"
 
   constructor(private formBuilder: FormBuilder,
     private api: ProductService,
@@ -59,7 +60,7 @@ export class productDialog implements OnInit {
       this.productForm.controls['Category'].setValue(this.editData.Category);
       this.productForm.controls['quantity'].setValue(this.editData.quantity);
       this.productForm.controls['brand'].setValue(this.editData.brand);
-      this.productForm.controls['image'].setValue(this.editData.image);
+      this.productForm.controls['image'].setValue("");
       this.productForm.controls['price'].setValue(this.editData.price);
     }
   }
@@ -67,7 +68,7 @@ export class productDialog implements OnInit {
 
     // if (!this.editData) {
     console.log(this.productForm.valid)
-    if (this.productForm) {
+    if (this.editData==undefined||this.editData == null) {
       let form: FormData = new FormData()
       for (let i = 0; i < this.Files.length; i++) {
 
@@ -83,11 +84,11 @@ export class productDialog implements OnInit {
      // console.log(form.get('files'))
       this.api.postProduct(form).subscribe({
         next: (res) => {
-          alert("Product added Successfully");
+          // alert("Product added Successfully");
 
           this.productForm.reset();
 
-          this.dialogRef.close();
+          this.dialogRef.close('Save');
           // this.getAllProducts();
         },
         error: () => {
@@ -101,16 +102,27 @@ export class productDialog implements OnInit {
       this.updateProduct()
     }
   }
-  // getAllProducts() {
-  //   throw new Error('Method not implemented.');
-  // }
+ 
   updateProduct() {
-    this.api.updateProduct(this.productForm.value).subscribe({
+    this.display = "block"
+    let form: FormData = new FormData()
+      for (let i = 0; i < this.Files.length; i++) {
+
+        form.append("image", this.Files[i], this.Files[i].name);
+      }
+      form.append("title", this.productForm.value["title"])
+      form.append("discription", this.productForm.value["discription"])
+      form.append("Category", this.productForm.value["Category"])
+      form.append("categoryId", '0')
+      form.append("quantity", this.productForm.value["quantity"])
+      form.append("brand", this.productForm.value["brand"])
+      form.append("price", this.productForm.value["price"])
+    this.api.updateProduct(form).subscribe({
       next: (res) => {
         console.log(res)
        // alert("Product updated Successfully");
         this.productForm.reset();
-        this.dialogRef.close('update');
+        this.dialogRef.close('Update');
       },
       error: () => {
         alert("Error has occured while updateing Data ")

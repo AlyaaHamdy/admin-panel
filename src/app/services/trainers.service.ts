@@ -18,7 +18,7 @@ export class TrainersService {
     return this.http.get<User[]>("http://localhost:8000/api/v1/users/trainer")
   }
   updateTrainer(data:User){
-    return this.http.patch("http://localhost:8000/api/v1/users/update_user",{...data,role:"trainer"})
+    return this.http.patch("http://localhost:8000/api/v1/users/update_user",data)
   }
   deleteTrainer(email:string){
     return this.http.delete<User>("http://localhost:8000/api/v1/users/delete",{

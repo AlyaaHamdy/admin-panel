@@ -6,9 +6,12 @@ table {
     height: 100%;
     position: relative;
 }
+.mat-cell{
+    font-size: 18px;
+}
 
 .mat-form-field {
-    font-size: 14px;
+    font-size: 18px;
     width: 100%;
 }
 td, th {
@@ -26,7 +29,7 @@ td, th {
 .addBtn {
     border: 1px solid #ff5733;
     border-radius: 2px;
-    margin-left: 91%;
+    margin-left: 88%;
     border-radius: 15px;
     background-color: #ff5733;
     color: #fff;

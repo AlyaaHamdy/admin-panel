@@ -13,7 +13,7 @@
     font-family: Roboto, "Helvetica Neue", sans-serif;
   }
   .modal-backdrop {
-    z-index: -10;
+    z-index: -10 !important;
   }
   
   .mat-sort-header-container {
@@ -23,4 +23,27 @@
     letter-spacing: normal;
     outline: 0;
     justify-content: center;
+  }
+  
+  .dropdown-menu.show {
+    position: absolute;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    transform: translate(-290px, 40px) !important;
+    -webkit-transform: translate(-290px, 40px) !important;
+    -moz-transform: translate(-290px, 40px) !important;
+    -ms-transform: translate(-290px, 40px) !important;
+    -o-transform: translate(-290px, 40px) !important;
+  }
+  
+  .dropdown-menu.show li h4:hover {
+    background-color: #ff5733;
+  }
+  
+  .material-icons {
+    font-family: 'Material Icons'!important;
+  }
+
+  .rotate{
+    transform: rotate(88deg);
   }

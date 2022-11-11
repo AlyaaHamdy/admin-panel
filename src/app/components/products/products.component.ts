@@ -5,6 +5,7 @@ import { ProductService } from '../../services/product.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 
 
 @Component({
@@ -13,7 +14,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'discription', 'Category', 'quantity','brand','image','price','action'];
+  displayedColumns: string[] = ['title','Category', 'quantity','action'];
   dataSource!: MatTableDataSource<any>;
 
   isloading = true;
@@ -61,6 +62,20 @@ export class ProductsComponent implements OnInit {
      
     })
   }
+
+  showDetails(product:any):any{
+    console.log(product)
+    const dialogRef = this.dialog.open(ProductDetailsComponent,{ data:product});
+
+    dialogRef.afterClosed().subscribe(product => {
+      //console.log(`Dialog result: ${user}`);
+    });
+  }
+
+
+
+
+
   deleteProduct(title:string){
     this.productServices.deleteProduct(title).subscribe({
       next:(res)=>{

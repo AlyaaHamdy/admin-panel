@@ -14,12 +14,13 @@ export class OrdersComponent implements OnInit {
     'orderId',
     'email',
     'items',
-    'status',
+    'TotalPrice',
     'action',
   ];
 
   dataSource!: MatTableDataSource<any>;
   color: string = '#ff5733';
+  items: any;
   constructor(private orderService: OrderService) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -44,5 +45,15 @@ export class OrdersComponent implements OnInit {
       },
     });
   }
-  
+  getTotal(row: any): number {
+    let total = 0;
+    for (let index = 0; index < row.items.length; index++) {
+      total += row.items[index].price;
+    }
+    return total;
+  }
+
+  changeItems(row: any) {
+    this.items = row;
+  }
 }

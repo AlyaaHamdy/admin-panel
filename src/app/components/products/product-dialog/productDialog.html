@@ -35,6 +35,7 @@
 
 
         <div class="form-group">
+            <!-- <img [ngStyle]="{display:display}" width="100px" height="100px" src="http://localhost:8000/{{editData.image[0]}}"/> -->
             <label>Image</label>
             <input class="form-control" formControlName="image" name="image" type="file" multiple (change)="AddImages($event)" placeholder="Select Image">
         </div>
