@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
     })
 
 
-    this.http.get<any>("http://localhost:8000/api/v1/users/allattendance").subscribe({
+    this.http.get<any>("http://localhost:8000/api/v1/users/tootalattendce").subscribe({
       next: (res) => {
         //this.code= res.code
         console.log(res)
@@ -85,7 +85,7 @@ export class DashboardComponent implements OnInit {
         name: 'Trainers',
         data:  [10, 20, 30, 40]
       }, {
-        name: 'Orders',
+        name: 'Attendees',
         data: [10, 20, 30, 40]
 
       }]

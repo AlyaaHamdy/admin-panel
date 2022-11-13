@@ -20,6 +20,10 @@ export class TrainersService {
   updateTrainer(data:User){
     return this.http.patch("http://localhost:8000/api/v1/users/update_user",data)
   }
+  assignTrainee(data:object){
+    console.log(data)
+    return this.http.patch("http://localhost:8000/api/v1/users/assignclienttotrainer",data)
+  }
   deleteTrainer(email:string){
     return this.http.delete<User>("http://localhost:8000/api/v1/users/delete",{
       body: {

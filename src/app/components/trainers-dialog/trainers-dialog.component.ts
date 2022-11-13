@@ -3,6 +3,7 @@ import { FormGroup,FormBuilder , Validator, Validators } from '@angular/forms';
 import { TrainersService } from '../../services/trainers.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class TrainersDialogComponent implements OnInit {
 //  subscriptionList =["premium","standerd","basic"]
 trainerForm! : FormGroup; 
   constructor(private formBuilder: FormBuilder,
-    private api:TrainersService, 
+    private api:TrainersService, private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public editData:any,
     private dialogRef:MatDialogRef<DialogComponent> ) {
     
@@ -51,12 +52,14 @@ trainerForm! : FormGroup;
         this.api.postTrainer(this.trainerForm.value).subscribe({
           next:(res)=>{
            // alert("Trainer added Successfully");
+           this.toastr.success("Trainer added Successfully")
            this.trainerForm.reset();
            this.dialogRef.close();
            
           },
           error:(err)=>{
-            console.log(err)
+            //console.log(err)
+            this.toastr.error("Error has occured while adding the trainer")
           }
         })
       }
@@ -67,12 +70,14 @@ trainerForm! : FormGroup;
   updateTrainer(){
     this.api.updateTrainer(this.trainerForm.value).subscribe({
       next:(res)=>{
-        alert("Trainer updated Successfully");
+        //alert("Trainer updated Successfully");
         this.trainerForm.reset();
         this.dialogRef.close('update');
+        this.toastr.success("Trainer has updated Successfully")
       },
       error:()=>{
-        alert("Error has occured while updateing Data ")
+        //alert("Error has occured while updateing Data ")
+        this.toastr.error("Error has occured while updating the trainer")
       }
     })
   }

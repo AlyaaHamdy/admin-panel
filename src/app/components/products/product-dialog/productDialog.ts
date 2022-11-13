@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from "../../../model/product"
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -21,6 +22,7 @@ export class productDialog implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private api: ProductService,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private dialogRef: MatDialogRef<productDialog>,
 
@@ -85,6 +87,7 @@ export class productDialog implements OnInit {
       this.api.postProduct(form).subscribe({
         next: (res) => {
           // alert("Product added Successfully");
+          this.toastr.success("Product added Successfully")
 
           this.productForm.reset();
 
@@ -94,6 +97,7 @@ export class productDialog implements OnInit {
         error: () => {
 
           // alert("Error has occured while adding a product")
+          this.toastr.error("Error has occured while adding the data")
         }
       })
     }
@@ -121,11 +125,13 @@ export class productDialog implements OnInit {
       next: (res) => {
         console.log(res)
        // alert("Product updated Successfully");
+       this.toastr.success("Product has updated Successfully")
         this.productForm.reset();
         this.dialogRef.close('Update');
       },
       error: () => {
-        alert("Error has occured while updateing Data ")
+        //alert("Error has occured while updateing Data ")
+        this.toastr.error("Error has occured while updateing the data")
       }
     })
   }

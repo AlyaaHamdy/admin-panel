@@ -28,19 +28,23 @@ export class HeaderComponent implements OnInit {
       (data: any) => {
         console.log(data);
         if (data.length == 0) this.hide();
+        this.notificationCount(data);
+        this.notfyList=[]
         for (let index = 0; index < data.length; index++) {
           this.notfyList.push(data[index]);
+          this.display = "block";
         }
       }
     );
   }
   hide() {
     this.display = 'none';
-    this.WebSocketService.emit('Clear Notifications', 'Hello From Admin');
+    this.count = 0;
+    
   }
-  notificationCount() {
-    if (this.notfyList.length > 0) {
-      this.count = this.notfyList.length;
+  notificationCount(data:any) {
+    if (data.length > this.notfyList.length) {
+      this.count = this.count + 1;
     }
   }
   toggleSidebar(){
@@ -56,6 +60,7 @@ export class HeaderComponent implements OnInit {
     console.log("Out")
     this.Auth.removeToken();
     this.router.navigateByUrl("login")
+    this.WebSocketService.emit('Clear Notifications', 'Hello From Admin');
   }
 
 }

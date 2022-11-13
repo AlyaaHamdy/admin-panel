@@ -8,30 +8,28 @@ import { Attendence } from 'src/app/model/attendence';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  code: string ="Code!!";
+  code: string = "Code!!";
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<Attendence>("http://localhost:8000/api/v1/users/getCode").subscribe({
+    this.http.get<Attendence>("http://localhost:8000/api/v1/users/tootalattendce").subscribe({
       next: (res) => {
-       if(res){
-        this.code= res.code
+
+        console.log(res)
         //console.log(res)
-       }else{
-        // alert("Generate Your Code")
-       }
+
       },
       error: (err) => {
         console.log(err)
       }
     })
-  
+
   }
 
   getGenerateCode() {
     this.http.get<Attendence>("http://localhost:8000/api/v1/users/attendce").subscribe({
       next: (res) => {
-        this.code= res.code
+        this.code = res.code
         console.log(res)
       },
       error: (err) => {

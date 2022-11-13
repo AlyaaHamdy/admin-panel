@@ -3,6 +3,7 @@ import { FormGroup,FormBuilder , Validator, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/model/user';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -17,6 +18,7 @@ export class DialogComponent implements OnInit {
 //  subscriptionList =["premium","standerd","basic"]
  traineeForm! : FormGroup; 
   constructor(private formBuilder: FormBuilder,
+    private toastr: ToastrService,
     
     private api:ApiService, 
     @Inject(MAT_DIALOG_DATA) public editData:any,
@@ -66,6 +68,7 @@ export class DialogComponent implements OnInit {
           next:(res)=>{
             // console.log(res)
             //alert("Trainee added Successfully");
+            this.toastr.success("Trainee has been added Successfully")
             this.traineeForm.reset();
             this.dialogRef.close();
             // location.reload()
@@ -73,7 +76,8 @@ export class DialogComponent implements OnInit {
           },
           error:(err)=>{
             console.log(err)
-            alert("Error has occured while adding a trainee")
+            //alert("Error has occured while adding a trainee")
+            this.toastr.error("Error has occured while adding a trainee!!!")
           }
         })
       }
@@ -86,11 +90,13 @@ export class DialogComponent implements OnInit {
       next:(res)=>{
         console.log(res)
         // alert("Trainee updated Successfully");
+        this.toastr.success("Trainee has been updated Successfully")
         this.traineeForm.reset();
         this.dialogRef.close('update');
       },
       error:()=>{
-        alert("Error has occured while updateing Data ")
+       // alert("Error has occured while updateing Data ")
+       this.toastr.error("Error has occured while updateing trainee!!!")
       }
     })
   }

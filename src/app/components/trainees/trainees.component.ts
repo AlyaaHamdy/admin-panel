@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/model/user';
 import { TraineeDetailsComponent } from '../trainee-details/trainee-details.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class TraineesComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private dialog: MatDialog, private api: ApiService) { }
+  constructor(private dialog: MatDialog, private api: ApiService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.isloading = true;
@@ -58,7 +59,8 @@ export class TraineesComponent implements OnInit {
       },
       error: (err) => {
         console.log(err)
-        alert("Error has occured while fetching the data!!! ")
+       // alert("Error has occured while fetching the data!!! ")
+       this.toastr.error("Error has occured while fetching the data!!!")
       }
     })
   }
@@ -87,10 +89,13 @@ export class TraineesComponent implements OnInit {
     this.api.deleteTrainee(email).subscribe({
 
       next: (res) => {
-       
-        location.reload()
+       this.toastr.success("Trainee has deleted successfully")
+        //location.reload()
         this.getAllTrainees();
          
+      },
+      error:()=> {
+        this.toastr.error("Error has occured while deleting the data!!!")
       },
     })
 

@@ -51,8 +51,9 @@ import { TrainerDetailsComponent } from './components/trainer-details/trainer-de
 import { TraineeDetailsComponent } from './components/trainee-details/trainee-details.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { AssignedTraineeComponent } from './components/assigned-trainee/assigned-trainee.component';
-
-
+import { ToastrModule } from 'ngx-toastr';
+import {ThemePalette} from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -113,11 +114,19 @@ import { AssignedTraineeComponent } from './components/assigned-trainee/assigned
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-top-center",
+      timeOut:5000,
+      
+    }),
+    MatCheckboxModule
+  
   
     
   ],
   providers: [
-    HttpIntercepters
+    HttpIntercepters,
+    // {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: { clickAction: 'noop' } as MatCheckboxDefaultOptions}
   ],
   bootstrap: [AppComponent]
 })

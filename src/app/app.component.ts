@@ -20,6 +20,9 @@ export class AppComponent implements OnInit {
       }
      )
   }
+  ngAfterViewInit(){
+    this.isloading = false;
+  }
 
 
 }

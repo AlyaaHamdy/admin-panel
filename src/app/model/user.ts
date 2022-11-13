@@ -1,4 +1,5 @@
 export interface User{
+  status: boolean;
     email:string;
     password:string;
     profileImage:string;

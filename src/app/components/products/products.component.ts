@@ -6,6 +6,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class ProductsComponent implements OnInit {
 
   isloading = true;
 
-  constructor(private dialog :MatDialog, private productServices:ProductService) { }
+  constructor(private dialog :MatDialog, private productServices:ProductService,private toastr: ToastrService) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -48,7 +49,8 @@ export class ProductsComponent implements OnInit {
         this.productServices.getProduct();
       },
       error:(err)=>{
-        alert("Error has occured while feching the data!!! ")
+       // alert("Error has occured while feching the data!!! ")
+       this.toastr.error("Error has occured while deleting the data")
       }
     })
   }
@@ -65,7 +67,7 @@ export class ProductsComponent implements OnInit {
 
   showDetails(product:any):any{
     console.log(product)
-    const dialogRef = this.dialog.open(ProductDetailsComponent,{ data:product});
+    const dialogRef = this.dialog.open(ProductDetailsComponent,{width:"100%", data:product});
 
     dialogRef.afterClosed().subscribe(product => {
       //console.log(`Dialog result: ${user}`);
@@ -80,16 +82,18 @@ export class ProductsComponent implements OnInit {
     this.productServices.deleteProduct(title).subscribe({
       next:(res)=>{
 
-        if("error" == res)
-        {
-        alert("Error");
+        // if("error" == res)
+        // {
+        // //alert("Error");
 
-        }
-        alert("Product has deleted Successfully");
+        // }
+        //alert("Product has deleted Successfully");
+        this.toastr.success("Product has deleted Successfully")
         this.getAllProducts();
       },
       error:()=>{
-        alert("Error has occured while deleting the data")
+       // alert("Error has occured while deleting the data")
+       this.toastr.error("Error has occured while deleting the Product")
       }
     })
 
