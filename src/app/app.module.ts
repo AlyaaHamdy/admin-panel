@@ -54,6 +54,7 @@ import { AssignedTraineeComponent } from './components/assigned-trainee/assigned
 import { ToastrModule } from 'ngx-toastr';
 import {ThemePalette} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     TraineeDetailsComponent,
     ProductDetailsComponent,
     AssignedTraineeComponent,
+    ConfirmDialogComponent,
   
     
   ],
@@ -128,6 +130,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     HttpIntercepters,
     // {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: { clickAction: 'noop' } as MatCheckboxDefaultOptions}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ConfirmDialogComponent]
 })
 export class AppModule { }

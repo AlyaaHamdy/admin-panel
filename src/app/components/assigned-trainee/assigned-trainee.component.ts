@@ -24,6 +24,8 @@ export class AssignedTraineeComponent implements OnInit {
   emailTrainer:any
   clientsTrainer:any[]=[]
   trainerList:[] = []
+  traineeEmail:any
+  filter:any
 
 
   constructor(private dialog: MatDialog, private api: ApiService,private toastr: ToastrService,private trainerService:TrainersService,@Inject(MAT_DIALOG_DATA) public data:any) { }
@@ -60,9 +62,10 @@ export class AssignedTraineeComponent implements OnInit {
     this.api.getTrainee().subscribe({
       
       next: (res) => {
-        console.log(res)
-         res.filter((item)=>!item.status)
-        this.dataSource = new MatTableDataSource<User>(res);
+        this.filter =  res.filter((item)=>!item.status)
+        
+         console.log(res)
+        this.dataSource = new MatTableDataSource<User>(this.filter);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         // console.log(this.dataSource)
@@ -77,6 +80,7 @@ export class AssignedTraineeComponent implements OnInit {
     console.log(user._id)
     console.log(this.emailTrainer)
     this.clientsTrainer.push({id:user._id,email:this.emailTrainer})
+    this.traineeEmail=user.email
     // this.trainerService.assignTrainee({email: this.dataTrainer,user:user._id})
     // if (this.clientsTrainer.length == 0) {
     //   this.clientsTrainer.push(user._id)
@@ -94,14 +98,21 @@ export class AssignedTraineeComponent implements OnInit {
       console.log("hjjh")
       this.trainerService.assignTrainee({user:this.clientsTrainer[index]}).subscribe({next:(res)=>{
         //alert("Trainer updated Successfully");
-        console.log(res)
+       // console.log(res)
       },
       error:()=>{
         //alert("Error has occured while updateing Data ")
        
       }
+      
     })
     }
+    this.api.updateTrainee({email:this.traineeEmail,status:true}).subscribe({
+      next:(res)=>{
+        console.log(res)
+
+      }
+    })
     console.log("ghghgh")
     this.trainerService.getTrainer();
   }

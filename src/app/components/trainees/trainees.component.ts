@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/model/user';
 import { TraineeDetailsComponent } from '../trainee-details/trainee-details.component';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 
 @Component({
@@ -17,9 +18,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TraineesComponent implements OnInit {
   isloading = true;
-  userCount!:number 
+  userCount!: number
 
-  user:any;
+  user: any;
 
   token = window.localStorage.getItem('token')
 
@@ -30,7 +31,7 @@ export class TraineesComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private dialog: MatDialog, private api: ApiService,private toastr: ToastrService) { }
+  constructor(private dialog: MatDialog, private api: ApiService, private toastr: ToastrService, private confirm: ConfirmDialogService) { }
 
   ngOnInit(): void {
     this.isloading = true;
@@ -42,8 +43,8 @@ export class TraineesComponent implements OnInit {
       width: '30%'
     }).afterClosed().subscribe(val => {
       // if (val === 'save') {
-        console.log("finnnissssssssssssssh")
-        this.getAllTrainees();
+      console.log("finnnissssssssssssssh")
+      this.getAllTrainees();
       // }
     })
   }
@@ -59,8 +60,8 @@ export class TraineesComponent implements OnInit {
       },
       error: (err) => {
         console.log(err)
-       // alert("Error has occured while fetching the data!!! ")
-       this.toastr.error("Error has occured while fetching the data!!!")
+        // alert("Error has occured while fetching the data!!! ")
+        this.toastr.error("Error has occured while fetching the data!!!")
       }
     })
   }
@@ -68,17 +69,17 @@ export class TraineesComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       width: '30%',
       data: row,
-    
-      
+
+
     }).afterClosed().subscribe(val => {
       this.token
-        this.getAllTrainees()
-   
+      this.getAllTrainees()
+
     })
   }
-  showDetails(user:any):any{
+  showDetails(user: any): any {
     console.log(user)
-    const dialogRef = this.dialog.open(TraineeDetailsComponent,{ width: '0',height:'0',data:user});
+    const dialogRef = this.dialog.open(TraineeDetailsComponent, { width: '0', height: '0', data: user });
 
     dialogRef.afterClosed().subscribe(user => {
       //console.log(`Dialog result: ${user}`);
@@ -86,18 +87,23 @@ export class TraineesComponent implements OnInit {
   }
   deleteTrainee(email: string) {
     console.log(email)
-    this.api.deleteTrainee(email).subscribe({
-
+    this.confirm.openConfirmDialog('Are you sure to delete this record ?').afterClosed().subscribe({
       next: (res) => {
-       this.toastr.success("Trainee has deleted successfully")
-        //location.reload()
-        this.getAllTrainees();
-         
+        if (res) {
+          this.api.deleteTrainee(email).subscribe({
+            next: () => {
+              this.toastr.success("Trainee has deleted successfully");
+              this.getAllTrainees();
+            }
+          });
+        }
+
       },
-      error:()=> {
+      error: () => {
         this.toastr.error("Error has occured while deleting the data!!!")
       },
     })
+
 
   }
 
@@ -112,7 +118,7 @@ export class TraineesComponent implements OnInit {
     }
   }
 
-  showuser(user:any){
+  showuser(user: any) {
     this.user = user
 
   }

@@ -67,7 +67,7 @@ export class ProductsComponent implements OnInit {
 
   showDetails(product:any):any{
     console.log(product)
-    const dialogRef = this.dialog.open(ProductDetailsComponent,{width:"100%", data:product});
+    const dialogRef = this.dialog.open(ProductDetailsComponent,{width:"50%", data:product});
 
     dialogRef.afterClosed().subscribe(product => {
       //console.log(`Dialog result: ${user}`);

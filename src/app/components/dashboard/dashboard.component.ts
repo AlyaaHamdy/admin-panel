@@ -16,7 +16,12 @@ export class DashboardComponent implements OnInit {
 
   bigChart = [];
   cards = [];
-  userCount!:number
+  userCount!:number;
+   totalUsers:number[];
+  trainerCount!:number;
+  revenewCount!:number;
+  totalAttendees!:number
+
   code: string = "Click to generate Code!!";
 
 
@@ -30,17 +35,18 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private api:ApiService,private http :HttpClient) { }
+  constructor(private api:ApiService,private http :HttpClient) {
+    this.totalUsers=[]
+   }
 
   ngOnInit() {
-    this.api.getTrainee().subscribe({
-      next:(res)=>{
+    this.api.getTrainee().subscribe(res=>{
+        
         this.userCount = res.length
-        //console.log(this.userCount)
-      },
-      error:(err)=>{
-       // console.log(err)
-      }
+        this.totalUsers.push(this.userCount)
+        console.log(this.totalUsers)
+     
+    
     })
 
 
@@ -76,17 +82,17 @@ export class DashboardComponent implements OnInit {
       },
       series: [{
         name: 'New Users',
-        data: this.userCount 
+        data: [...this.totalUsers] 
       }, {
         name: 'Revenue',
-        data:  [10, 20, 30, 40]
+        data:  [1, 2, 3, 4]
 
       }, {
         name: 'Trainers',
-        data:  [10, 20, 30, 40]
+        data:  [1, 2, 3, 4]
       }, {
         name: 'Attendees',
-        data: [10, 20, 30, 40]
+        data: [1, 2, 3, 4]
 
       }]
     };

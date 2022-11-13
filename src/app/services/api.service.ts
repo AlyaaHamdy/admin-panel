@@ -20,7 +20,7 @@ export class ApiService {
     return this.http.get<User[]>("http://localhost:8000/api/v1/users/client")
   }
 
-  updateTrainee(data:User){
+  updateTrainee(data:any){
     return this.http.patch("http://localhost:8000/api/v1/users/update_user",data)
   }
 
