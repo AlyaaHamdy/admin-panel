@@ -9,6 +9,7 @@ import { User } from 'src/app/model/user';
 import { TrainerDetailsComponent } from '../trainer-details/trainer-details.component';
 import { AssignedTraineeComponent } from '../assigned-trainee/assigned-trainee.component';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class TrainersComponent implements OnInit {
   isloading = true;
   
 
-  constructor(private dialog :MatDialog, private api:TrainersService,private toastr: ToastrService) { }
+  constructor(private dialog :MatDialog, private api:TrainersService,private toastr: ToastrService, private confirm: ConfirmDialogService) { }
 
   ngOnInit(): void {
     this.isloading = true;
@@ -55,7 +56,7 @@ export class TrainersComponent implements OnInit {
       },
       error:(err)=>{
         // alert("Error has occured while feching the data!!! ")
-        this.toastr.error("Error has occured while deleting the data")
+        this.toastr.error("Error has occured while feching the data")
       }
     })
 
@@ -72,16 +73,21 @@ export class TrainersComponent implements OnInit {
   }
   
   deleteTrainer(email:string){
-    this.api.deleteTrainer(email).subscribe({
-      next:(res)=>{
-       // alert("Trainer has deleted Successfully");
-       this.toastr.success("Trainer has deleted Successfully")
-        this.getAllTrainers();
+    this.confirm.openConfirmDialog('Are you sure to delete this record ?').afterClosed().subscribe({
+      next: (res) => {
+        if (res) {
+          this.api.deleteTrainer(email).subscribe({
+            next: () => {
+              this.toastr.success("Trainer has deleted successfully");
+              this.getAllTrainers();
+            }
+          });
+        }
+
       },
-      error:()=>{
-        // alert("Error has occured while deleting the data")
-        this.toastr.error("Error has occured while deleting the data")
-      }
+      error: () => {
+        this.toastr.error("Error has occured while deleting the data!!!")
+      },
     })
 
   }

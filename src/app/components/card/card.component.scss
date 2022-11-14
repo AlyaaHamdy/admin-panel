@@ -1,20 +1,47 @@
 h4 {
-    margin-top: 0;
-    margin-bottom: 5px;
-  }
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: aliceblue;
+}
+
+
+.total {
+  font-size: 2em;
+}
+
+.mat-icon,
+.description {
+  color: #ff5733;
+  font-size: 1.5em;
+}
+
+.mat-icon {
+  position: relative;
+  padding: 0 10px;
+  top: 0px;
+}
+
+.text {
+  background-color: #222;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  color: aliceblue;
+  border-radius: 5px;
+
+}
+
+.text:hover {
+  // box-shadow: 0 8px 16px 0 #ff5733;
+  background-color: #ff5733;
   
-  .total {
-    font-size: 2em;
+  transition: ease-in-out;
+
+  &h4 {
+    color: #222;
   }
-  
-  .mat-icon,
+
+  &.mat-icon,
   .description {
-    color: green;
-    font-size: 1.5em;
+    color: #222;
   }
-  
-  .mat-icon {
-    position: relative;
-    padding: 0 10px;
-    top: 0px;
-  }
+}

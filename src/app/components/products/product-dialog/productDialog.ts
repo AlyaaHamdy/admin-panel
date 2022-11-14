@@ -87,7 +87,7 @@ export class productDialog implements OnInit {
       this.api.postProduct(form).subscribe({
         next: (res) => {
           // alert("Product added Successfully");
-          this.toastr.success("Product added Successfully")
+          this.toastr.success("Product has been added Successfully")
 
           this.productForm.reset();
 
@@ -125,7 +125,7 @@ export class productDialog implements OnInit {
       next: (res) => {
         console.log(res)
        // alert("Product updated Successfully");
-       this.toastr.success("Product has updated Successfully")
+       this.toastr.success("Product has been updated Successfully")
         this.productForm.reset();
         this.dialogRef.close('Update');
       },

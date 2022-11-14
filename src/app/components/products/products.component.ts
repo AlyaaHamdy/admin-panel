@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ProductsComponent implements OnInit {
 
   isloading = true;
 
-  constructor(private dialog :MatDialog, private productServices:ProductService,private toastr: ToastrService) { }
+  constructor(private dialog :MatDialog, private productServices:ProductService,private toastr: ToastrService,private confirm: ConfirmDialogService) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -79,23 +80,40 @@ export class ProductsComponent implements OnInit {
 
 
   deleteProduct(title:string){
-    this.productServices.deleteProduct(title).subscribe({
-      next:(res)=>{
+    // this.productServices.deleteProduct(title).subscribe({
+    //   next:(res)=>{
 
-        // if("error" == res)
-        // {
-        // //alert("Error");
+    //     // if("error" == res)
+    //     // {
+    //     // //alert("Error");
 
-        // }
-        //alert("Product has deleted Successfully");
-        this.toastr.success("Product has deleted Successfully")
-        this.getAllProducts();
+    //     // }
+    //     //alert("Product has deleted Successfully");
+    //     this.toastr.success("Product has deleted Successfully")
+    //     this.getAllProducts();
+    //   },
+    //   error:()=>{
+    //    // alert("Error has occured while deleting the data")
+    //    this.toastr.error("Error has occured while deleting the Product")
+    //   }
+    // })
+    this.confirm.openConfirmDialog('Are you sure to delete this record ?').afterClosed().subscribe({
+      next: (res) => {
+        if (res) {
+          this.productServices.deleteProduct(title).subscribe({
+            next: () => {
+              this.toastr.success("Trainer has been deleted successfully");
+              this.getAllProducts();
+            }
+          });
+        }
+
       },
-      error:()=>{
-       // alert("Error has occured while deleting the data")
-       this.toastr.error("Error has occured while deleting the Product")
-      }
+      error: () => {
+        this.toastr.error("Error has occured while deleting the data!!!")
+      },
     })
+
 
   }
   applyFilter(event: Event) {

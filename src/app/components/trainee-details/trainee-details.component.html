@@ -1,70 +1,21 @@
-<!-- <h1 mat-dialog-title>Client Details</h1>
-<mat-dialog-content class="mat-typography">
-  <h1>{{user.firstName}}</h1>
-  
-
-  <h3>{{user.lastName}}</h3>
-  <h1>{{user.gender}}</h1>
-  
-</mat-dialog-content>
-
-
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-</mat-dialog-actions> -->
-
-<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="wrapper">
-  <div class="left">
-    <!-- <img src={{user.profileImage}}  alt="user" width="100"> -->
-    <h1>{{user.firstName}}</h1>
-    <h4>{{user.role}}</h4>
-    <p>{{user.address}}</p>
-  </div>
-  <div class="right">
-    <div class="info">
-      <h3>Trainee Details</h3>
-      <div class="info_data">
-        <div class="data">
-          <h4>Email</h4>
-          <p>{{user.email}}</p>
-        </div>
-        <div class="data">
-          <h4>Phone</h4>
-          <p>{{user.phoneNumber}}</p>
-        </div>
-        <!-- <div class="data">
-          <h4>Address</h4>
-          <p>{{user.address}}</p>
-        </div> -->
+  <div class="container">
+     
+    <div class="content">
+      <div class="sub-content">
+        <h1>{{user.firstName}}</h1>
+
+        <a href="">{{user.email}}</a>
+        <p>{{user.subscription}}</p>
+        <h3>{{user.role}}</h3>
+        <span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>{{user.address}}</span>
+        <h6>{{user.gender}}</h6>
+        <h4>Supervised by: <br><h1>{{user.trainerId.firstName}}</h1></h4>
       </div>
+  
+      
     </div>
-
-    <div class="projects">
-      <h3>Data</h3>
-      <div class="projects_data">
-        <div class="data">
-          <h4>Subscription</h4>
-          <p>{{user.subscription}}</p>
-        </div>
-        <div class="data">
-          <h4 style="margin-left: 30px;">Gender</h4>
-          <p style="margin-left: 30px;">{{user.gender}}</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- <div class="social_media">
-            <ul>
-              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-      </div> -->
-
-      <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Cancel</button>
-      </mat-dialog-actions>
   </div>
 </div>

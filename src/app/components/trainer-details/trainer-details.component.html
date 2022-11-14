@@ -1,37 +1,53 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
 <div class="wrapper">
-  <div class="container">
-    <!-- <img src={{user.profileImage}}  class="profile-img"> -->
-    <!-- <img src={{user.profileImage}} alt="" class="profile-img"> -->
-    
-    <div class="content">
-      <div class="sub-content">
-        <h1>{{user.firstName}}</h1>
-        <span>{{user.gender}}</span>
-        <p>{{user.role}}</p>
-        <span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>{{user.address}}</span>
-        <a href="">{{user.email}}</a>
+  <div class="left">
+    <!-- <img src={{user.profileImage}}  alt="user" width="100"> -->
+    <h1>{{user.firstName}}</h1>
+    <h4>{{user.role}}</h4>
+    <p>{{user.address}}</p>
+    <h4>Assigned Trainee:</h4>
+    <li *ngFor="let item of user.clientIds">
+      <p>{{item.firstName}}</p>
+    </li>
+   
+  </div>
+  <div class="right">
+    <div class="info">
+      <h3>Trainer Details</h3>
+      <div class="info_data">
+        <div class="data">
+          <h4>Email</h4>
+          <p>{{user.email}}</p>
+        </div>
+        <div class="data">
+          <h4>Phone</h4>
+          <p>{{user.phoneNumber}}</p>
+        </div>
+        <div class="data">
+          
+          
+        </div>
       </div>
-      <!-- <div class="data">
-        <div class="inner-data">
-          <span><i class="fa fa-users" aria-hidden="true"></i></span>
-          <p>11M</p>
+    </div>
+
+    <div class="projects">
+      <h3>Data</h3>
+      <div class="projects_data">
+        <div class="data">
+          <h4>Address</h4>
+          <p>{{user.address}}</p>
         </div>
-        <div class="inner-data">
-          <span><i class="fa fa-twitter-square" aria-hidden="true"></i></span>
-          <p>1,470</p>
+        <div class="data">
+          <h4 style="margin-left: 30px;">Gender</h4>
+          <p style="margin-left: 30px;">{{user.gender}}</p>
         </div>
-        <div class="inner-data">
-          <span><i class="fa fa-user-plus" aria-hidden="true"></i></span>
-          <p>80</p>
-        </div>
-      </div> -->
+      </div>
+    </div>
 
       <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Close</button>
+        <button mat-button mat-dialog-close>Cancel</button>
       </mat-dialog-actions>
-      
-    </div>
   </div>
 </div>
