@@ -13,11 +13,12 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddProductComponent } from './components/products/add-product/add-product.component';
 import { AuthGuard } from './guards/auth.guard';
+import { UnAuthGuard } from './guards/unauth.guard';
 
 const routes: Routes = [
-  // {path:'',component:Load},
+  {path:'',redirectTo:'login',pathMatch:"full"},
 
-  {path:'login',component:LoginFormComponent},
+  {path:'login',component:LoginFormComponent,canActivate:[UnAuthGuard]},
   {
     path: 'dashboard', component: MainLayoutComponent,
     canActivate: [AuthGuard],
