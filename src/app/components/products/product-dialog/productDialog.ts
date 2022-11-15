@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/product.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Product } from "../../../model/product"
+import { EditableProduct, Product } from "../../../model/product"
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -17,6 +17,7 @@ export class productDialog implements OnInit {
   productForm!: FormGroup;
   isUploading: boolean = false;
   product: Product;
+  editproduct: EditableProduct;
   Files: File[] = [];
   display:string = "none"
 
@@ -29,6 +30,7 @@ export class productDialog implements OnInit {
     // src: string, public file: File
   ) {
     this.product = { id: 0, title: "", discription: "", price: 1, quantity: 1, brand: '', categoryId: 0, Category: "", image: null }
+    this.editproduct = {  title: "", discription: "", price: 1, quantity: 1, brand: '', Category: "" }
 
   }
   AddImages(event: any): void {
@@ -109,19 +111,25 @@ export class productDialog implements OnInit {
  
   updateProduct() {
     this.display = "block"
-    let form: FormData = new FormData()
-      for (let i = 0; i < this.Files.length; i++) {
+    // let form: FormData = new FormData()
+    //   for (let i = 0; i < this.Files.length; i++) {
 
-        form.append("image", this.Files[i], this.Files[i].name);
-      }
-      form.append("title", this.productForm.value["title"])
-      form.append("discription", this.productForm.value["discription"])
-      form.append("Category", this.productForm.value["Category"])
-      form.append("categoryId", '0')
-      form.append("quantity", this.productForm.value["quantity"])
-      form.append("brand", this.productForm.value["brand"])
-      form.append("price", this.productForm.value["price"])
-    this.api.updateProduct(form).subscribe({
+    //     form.append("image", this.Files[i], this.Files[i].name);
+    //   }
+    //   form.append("title", this.productForm.value["title"])
+    //   form.append("discription", this.productForm.value["discription"])
+    //   form.append("Category", this.productForm.value["Category"])
+    //   form.append("quantity", this.productForm.value["quantity"])
+    //   form.append("brand", this.productForm.value["brand"])
+    //   form.append("price", this.productForm.value["price"])
+   this.editproduct.title =  this.productForm.value["title"]
+   this.editproduct.discription =  this.productForm.value["discription"]
+   this.editproduct.Category =  this.productForm.value["Category"]
+   this.editproduct.quantity = this.productForm.value["quantity"]
+   this.editproduct.brand =  this.productForm.value["brand"]
+   this.editproduct.price =  this.productForm.value["price"]
+      console.log(this.editproduct)
+    this.api.updateProduct(this.editproduct).subscribe({
       next: (res) => {
         console.log(res)
        // alert("Product updated Successfully");

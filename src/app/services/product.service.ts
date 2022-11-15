@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '../model/product'
+import { EditableProduct, Product } from '../model/product'
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,8 @@ export class ProductService {
     return this.http.get<Product[]>("http://localhost:8000/api/v1/products")
   }
 
-  updateProduct(data: FormData) {
+  updateProduct(data: EditableProduct) {
+    console.log(data)
     return this.http.patch("http://localhost:8000/api/v1/products/update", data)
   }
 

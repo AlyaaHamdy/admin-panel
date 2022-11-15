@@ -41,7 +41,9 @@ export class DashboardComponent implements OnInit {
  
 
   ngOnInit() {
+    console.log("1")
     window.history.length == 0
+    console.log("2")
     this.api.getTrainee().subscribe(res => {
       this.userCount = res.length
     })

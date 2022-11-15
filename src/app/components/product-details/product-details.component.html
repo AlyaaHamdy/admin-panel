@@ -1,8 +1,9 @@
- <h1 class="text-center">{{product.title}}</h1>
+ 
 <ul class="slides">
   <input type="radio" name="radio-btn" id="img-1" checked />
   <li  class="slide-container" >
      <div class="slide"*ngFor="let item of product.image" >
+      <h1 class="text-center">{{product.title}}</h1>
       <img   src="http://localhost:8000/{{item}}"/>
      </div>
     <div class="nav"  >
@@ -47,7 +48,8 @@
    <input type="radio" name="radio-btn" id="img-5" />
     <li class="slide-container" *ngFor="let item of product.image">
         <div class="slide">
-          <h1 class="text-center">{{product.discription}}</h1>
+          <h1>Description:</h1>
+          <h4 class="text-center">{{product.discription}}</h4>
           <!-- <img src="http://farm9.staticflickr.com/8055/8098750623_66292a35c0_z.jpg" /> -->
         </div>
 		<div class="nav">
@@ -59,6 +61,7 @@
     <input type="radio" name="radio-btn" id="img-6" />
     <li class="slide-container" *ngFor="let item of product.image">
         <div class="slide">
+          <h1>Brand:</h1>
           <h1 class="text-center">{{product.brand}}</h1>
           <!-- <img src="http://farm9.staticflickr.com/8195/8098750703_797e102da2_z.jpg" /> -->
         </div>

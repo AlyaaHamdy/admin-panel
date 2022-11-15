@@ -10,7 +10,7 @@ import { NotificationService } from './../../services/notification.service';
   styleUrls: ['./notifications.component.scss'],
 })
 export class NotificationsComponent implements OnInit {
-  displayedColumns: string[] = ['Message', 'SenderEmail', 'Date', 'action'];
+  displayedColumns: string[] = ['Message', 'SenderEmail', 'Date'];
   dataSource!: MatTableDataSource<any>;
   constructor(private notificationService: NotificationService) {}
   @ViewChild(MatPaginator) paginator!: MatPaginator;

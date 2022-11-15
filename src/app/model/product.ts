@@ -9,3 +9,12 @@ export interface Product{
     price:number;
     categoryId:number
 }
+export interface EditableProduct{
+
+    title:string;
+    discription:string;
+    Category:string;
+    quantity:number;
+    brand:string;
+    price:number;
+}
