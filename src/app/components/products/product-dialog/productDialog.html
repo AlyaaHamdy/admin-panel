@@ -3,7 +3,7 @@
 <form [formGroup]="productForm" enctype="multipart/form-data" style="z-index: 1;">
         <mat-form-field appearance="outline">
             <mat-label>Product Name</mat-label>
-            <input formControlName="title" matInput placeholder="Product Name">
+            <input formControlName="title" matInput placeholder="Product Name" [readonly]="editData">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Discription</mat-label>

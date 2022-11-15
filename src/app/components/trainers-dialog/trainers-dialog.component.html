@@ -5,13 +5,13 @@
             <mat-label>Trainer Name</mat-label>
             <input formControlName="firstName" matInput placeholder="Name">
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" >
             <mat-label>Trainer Email</mat-label>
-            <input formControlName="email" matInput placeholder="Email">
+            <input formControlName="email" matInput placeholder="Email" [readonly]="editData"/>
         </mat-form-field>
 
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" *ngIf="!editData">
             <mat-label>Password</mat-label>
             <input formControlName="password" matInput placeholder="Password">
         </mat-form-field>

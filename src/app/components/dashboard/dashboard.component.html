@@ -2,26 +2,29 @@
   <div class="d-flex page__box p-3 mt-2">Dashboard</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data position-absolute text-center">
-      <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
-        style="width: 100%; height: 100%; display: block;"></highcharts-chart>
+      <!-- <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+        style="width: 100%; height: 100%; display: block;"></highcharts-chart> -->
+
+        <!-- <canvas mdbChart type="'bar'" datasets="datasets" labels="labels"></canvas> -->
+        <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>  
 
 
 
 
 
 
-        <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards mt-5" >
           <mat-card fxFlex="25">
-              <app-card label="New Users" total="12k" percentage="50" [data]="cards"></app-card>
+              <app-card label="Trainees" total={{userCount}}  [data]="cards"></app-card>
           </mat-card>
           <mat-card fxFlex="25">
-              <app-card label="Revenue" total="10k" percentage="40" [data]="cards"></app-card>
+              <app-card label="Revenue" total={{revenueCount}}  [data]="cards"></app-card>
           </mat-card>
           <mat-card fxFlex="25">
-              <app-card label="Trainers" total="8k" percentage="30" [data]="cards"></app-card>
+              <app-card label="Trainers" total={{trainerCount}}  [data]="cards"></app-card>
           </mat-card>
           <mat-card fxFlex="25">
-              <app-card label="Attendees" total="6k" percentage="20" [data]="cards"></app-card>
+              <app-card label="Attendees" total={{attendeesCount}} [data]="cards"></app-card>
           </mat-card>
       </div>
     </div>

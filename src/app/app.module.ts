@@ -55,7 +55,9 @@ import { ToastrModule } from 'ngx-toastr';
 import {ThemePalette} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-
+import { CanvasJSChart } from 'angular-canvasjs-chart-samples/angular-canvasjs-chart-samples/src/assets/canvasjs.angular.component';
+// import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+// var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,6 +86,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     ProductDetailsComponent,
     AssignedTraineeComponent,
     ConfirmDialogComponent,
+    CanvasJSChart
+    
   
     
   ],

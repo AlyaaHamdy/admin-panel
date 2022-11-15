@@ -12,17 +12,17 @@ export class SidenavComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    // this.http.get<Attendence>("http://localhost:8000/api/v1/users/tootalattendce").subscribe({
-    //   next: (res) => {
+    this.http.get<Attendence>("http://localhost:8000/api/v1/users/getCode").subscribe({
+      next: (res) => {
+        this.code=res.code
+        console.log(res)
+        //console.log(res)
 
-    //     console.log(res)
-    //     //console.log(res)
-
-    //   },
-    //   error: (err) => {
-    //     console.log(err)
-    //   }
-    // })
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
 
   }
 

@@ -44,6 +44,7 @@ trainerForm! : FormGroup;
       this.trainerForm.controls['phoneNumber'].setValue(this.editData.phoneNumber);
       this.trainerForm.controls['address'].setValue(this.editData.address);
     }
+    
   }
   addTrainer(){
     if(!this.editData){

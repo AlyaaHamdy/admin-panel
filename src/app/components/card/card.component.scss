@@ -1,12 +1,14 @@
 h4 {
   margin-top: 0;
   margin-bottom: 5px;
-  color: aliceblue;
+  color: #ff5733;
+  top: 5%;
 }
 
 
 .total {
   font-size: 2em;
+  
 }
 
 .mat-icon,
@@ -35,13 +37,12 @@ h4 {
   background-color: #ff5733;
   
   transition: ease-in-out;
-
-  &h4 {
-    color: #222;
-  }
-
   &.mat-icon,
   .description {
     color: #222;
   }
+}
+
+.text:hover >h4{
+  color: aliceblue;
 }
