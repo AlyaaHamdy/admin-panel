@@ -9,11 +9,11 @@ import { AuthService } from 'src/app/services/Auth.service';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private router:Router,private Auth:AuthService) { }
+  constructor(private router: Router, private Auth: AuthService) { }
 
   ngOnInit(): void {
     this.Auth.logout().subscribe(
-      (response)=>{
+      (response) => {
         console.log(response)
         this.Auth.removeToken()
         // this.Auth.setLoggedStatus(false)

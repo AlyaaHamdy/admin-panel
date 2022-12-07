@@ -10,21 +10,24 @@ table {
 .mat-form-field {
     font-size: 18px;
     width: 100%;
-    
+
 }
-td, th {
+
+td,
+th {
     // width: 100%;
     align-items: center;
     align-content: center;
-    
-  }
+
+}
 
 .container {
     max-width: 2000px;
     margin: 0 auto;
     position: absolute;
 }
-.mat-cell{
+
+.mat-cell {
     font-size: 18px;
 }
 
@@ -36,7 +39,8 @@ td, th {
     background-color: #ff5733;
     color: #fff;
 }
-.mat-header-cell{
+
+.mat-header-cell {
     font-size: 20px;
     color: black;
 }

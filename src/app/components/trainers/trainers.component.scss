@@ -6,7 +6,8 @@ table {
     height: 100%;
     position: relative;
 }
-.mat-cell{
+
+.mat-cell {
     font-size: 18px;
 }
 
@@ -14,11 +15,13 @@ table {
     font-size: 18px;
     width: 100%;
 }
-td, th {
+
+td,
+th {
     // width: 100%;
     align-items: center;
     align-content: center;
-  }
+}
 
 .container {
     max-width: 2000px;
@@ -34,7 +37,8 @@ td, th {
     background-color: #ff5733;
     color: #fff;
 }
-.mat-header-cell{
+
+.mat-header-cell {
     font-size: 20px;
     color: black;
 }

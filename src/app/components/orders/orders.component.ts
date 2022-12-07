@@ -22,7 +22,7 @@ export class OrdersComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   color: string = '#ff5733';
   items: any;
-  constructor(private orderService: OrderService, private toastr: ToastrService) {}
+  constructor(private orderService: OrderService, private toastr: ToastrService) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -42,8 +42,8 @@ export class OrdersComponent implements OnInit {
         this.orderService.getOrders();
       },
       error: (err) => {
-       // alert('Error has occured while feching the data!!! ');
-       this.toastr.error("Error has occured while feching the data!!!")
+        // alert('Error has occured while feching the data!!! ');
+        this.toastr.error("Error has occured while feching the data!!!")
       },
     });
   }

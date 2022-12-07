@@ -7,7 +7,9 @@
       <mat-form-field appearance="standard">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Ahmed" #input>
-        <button mat-button class="addBtn" (click)="openDialog()"><mat-icon>exposure_plus</mat-icon>Add Trainee</button>
+        <button mat-button class="addBtn" (click)="openDialog()">
+          <mat-icon>exposure_plus</mat-icon>Add Trainee
+        </button>
       </mat-form-field>
 
       <div class="mat-elevation-z8" style="margin-top: 10px;">
@@ -56,7 +58,7 @@
             <td mat-cell *matCellDef="let row"> {{row.address}} </td>
           </ng-container> -->
 
-          
+
 
           <!-----Action Column ---->
           <ng-container matColumnDef="action">
@@ -68,7 +70,7 @@
               <button mat-icon-button color="warn" (click)="showDetails(row)">
                 <mat-icon>assignment_ind</mat-icon>
               </button>
-              
+
               <button mat-icon-button color="warn" (click)="deleteTrainee(row.email)">
                 <mat-icon>delete</mat-icon>
               </button>

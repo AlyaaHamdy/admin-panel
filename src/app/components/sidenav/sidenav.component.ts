@@ -14,7 +14,7 @@ export class SidenavComponent implements OnInit {
   ngOnInit() {
     this.http.get<Attendence>("http://localhost:8000/api/v1/users/getCode").subscribe({
       next: (res) => {
-        this.code=res.code
+        this.code = res.code
         console.log(res)
         //console.log(res)
 

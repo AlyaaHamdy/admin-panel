@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,20 +18,20 @@ export class CardComponent implements OnInit {
 
   Highcharts = Highcharts;
   chartOptions = {};
-  totalUsers!:number[];
-  userCount!:number;
+  totalUsers!: number[];
+  userCount!: number;
 
-  constructor(private api:ApiService,private http :HttpClient) { }
+  constructor(private api: ApiService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.api.getTrainee().subscribe(res=>{
-        
+    this.api.getTrainee().subscribe(res => {
+
       this.userCount = res.length
       // this.totalUsers.push(this.userCount)
       console.log(this.totalUsers)
-   
-  
-  })
+
+
+    })
     this.chartOptions = {
       chart: {
         type: 'area',

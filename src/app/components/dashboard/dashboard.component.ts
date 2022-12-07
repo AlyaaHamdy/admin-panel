@@ -19,14 +19,14 @@ export class DashboardComponent implements OnInit {
   cards = [];
   chart: any[] = [];
   userCount!: number;
-  totalUsers: number[] =[];
+  totalUsers: number[] = [];
   totalTainers!: number[];
   trainerCount!: number;
   revenueCount!: number;
   totalRevenue!: number[];
   attendeesCount!: number
   totalAttendees!: number[];
-  chartOptions={};
+  chartOptions = {};
   date: string[] = [];
   Attendence: number[] = [];
   code: string = "Click to generate Code!!";
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private api: ApiService, private http: HttpClient, private trainerService: TrainersService, private orderService: OrderService) {
   }
- 
+
 
   ngOnInit() {
     console.log("1")
@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
       let arr = []
       for (let i = 0; i < res.length; i++) {
         let all = new Date(res[i].date)
-        arr.push({ label: all.toLocaleString('en-En',{month: "short", day: "numeric"}), y: res[i].attendce.length });
+        arr.push({ label: all.toLocaleString('en-En', { month: "short", day: "numeric" }), y: res[i].attendce.length });
       }
       this.chart = arr;
       console.log(this.chart);
@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
         animationEnabled: true,
         theme: "light1",
         title: {
-          color:"orange",
+          color: "orange",
           text: "Attendees Analysis"
         },
         axisY: {
@@ -82,13 +82,13 @@ export class DashboardComponent implements OnInit {
           includeZero: true,
           labelFormatter: (e: any) => {
             var suffixes = ["", "K", "M", "B"];
-  
+
             var order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
             if (order > suffixes.length - 1)
               order = suffixes.length - 1;
-  
+
             var suffix = suffixes[order];
-            return  (e.value / Math.pow(1000, order)) + suffix;
+            return (e.value / Math.pow(1000, order)) + suffix;
           }
         },
         toolTip: {
@@ -107,7 +107,7 @@ export class DashboardComponent implements OnInit {
         },
         data: [{
           type: "column",
-          theme:"light2",
+          theme: "light2",
           showInLegend: true,
           name: "Attendees",
           axisYType: "secondary",
@@ -122,7 +122,7 @@ export class DashboardComponent implements OnInit {
       }
 
     })
-   
+
   }
   // ngAfterViewInit(): void {
   //   this.chartOptions = {

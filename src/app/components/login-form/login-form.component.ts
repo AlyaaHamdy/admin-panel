@@ -15,7 +15,7 @@ export class LoginFormComponent implements OnInit {
   isValid = false;
 
   returnURL: string = "";
-display: string ="none";
+  display: string = "none";
   constructor(private router: Router, private activate: ActivatedRoute, private Auth: AuthService) {
     this.addform = new FormGroup({
       email: new FormControl("", [Validators.required]),
@@ -30,27 +30,21 @@ display: string ="none";
     let user: AdminLogin = this.addform.value as AdminLogin
     console.log("ddddddd")
     this.Auth.login(user).subscribe({
-      next:(response) => {
+      next: (response) => {
         // console.log(response)
-         if (response) {
-         this.Auth.setToken(response.authorization)
-         
-           this.router.navigateByUrl("dashboard")
-           
-          
-           this.isValid = true
-        
-         }
-         else{
-          
-           this.router.navigateByUrl("/")
-         }
-           
-        },
-        error:(err)=>{
-          console.log(err);
-          this.display = "block"
-        }    
+        if (response) {
+          this.Auth.setToken(response.authorization)
+          this.router.navigateByUrl("dashboard")
+          this.isValid = true
+        }
+        else {
+          this.router.navigateByUrl("/")
+        }
+      },
+      error: (err) => {
+        console.log(err);
+        this.display = "block"
+      }
     })
   }
 

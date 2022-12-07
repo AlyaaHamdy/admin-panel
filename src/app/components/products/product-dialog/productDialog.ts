@@ -19,7 +19,7 @@ export class productDialog implements OnInit {
   product: Product;
   editproduct: EditableProduct;
   Files: File[] = [];
-  display:string = "none"
+  display: string = "none"
 
   constructor(private formBuilder: FormBuilder,
     private api: ProductService,
@@ -30,7 +30,7 @@ export class productDialog implements OnInit {
     // src: string, public file: File
   ) {
     this.product = { id: 0, title: "", discription: "", price: 1, quantity: 1, brand: '', categoryId: 0, Category: "", image: null }
-    this.editproduct = {  title: "", discription: "", price: 1, quantity: 1, brand: '', Category: "" }
+    this.editproduct = { title: "", discription: "", price: 1, quantity: 1, brand: '', Category: "" }
 
   }
   AddImages(event: any): void {
@@ -72,7 +72,7 @@ export class productDialog implements OnInit {
 
     // if (!this.editData) {
     console.log(this.productForm.valid)
-    if (this.editData==undefined||this.editData == null) {
+    if (this.editData == undefined || this.editData == null) {
       let form: FormData = new FormData()
       for (let i = 0; i < this.Files.length; i++) {
 
@@ -85,7 +85,7 @@ export class productDialog implements OnInit {
       form.append("quantity", this.productForm.value["quantity"])
       form.append("brand", this.productForm.value["brand"])
       form.append("price", this.productForm.value["price"])
-     // console.log(form.get('files'))
+      // console.log(form.get('files'))
       this.api.postProduct(form).subscribe({
         next: (res) => {
           // alert("Product added Successfully");
@@ -108,7 +108,7 @@ export class productDialog implements OnInit {
       this.updateProduct()
     }
   }
- 
+
   updateProduct() {
     this.display = "block"
     // let form: FormData = new FormData()
@@ -122,18 +122,18 @@ export class productDialog implements OnInit {
     //   form.append("quantity", this.productForm.value["quantity"])
     //   form.append("brand", this.productForm.value["brand"])
     //   form.append("price", this.productForm.value["price"])
-   this.editproduct.title =  this.productForm.value["title"]
-   this.editproduct.discription =  this.productForm.value["discription"]
-   this.editproduct.Category =  this.productForm.value["Category"]
-   this.editproduct.quantity = this.productForm.value["quantity"]
-   this.editproduct.brand =  this.productForm.value["brand"]
-   this.editproduct.price =  this.productForm.value["price"]
-      console.log(this.editproduct)
+    this.editproduct.title = this.productForm.value["title"]
+    this.editproduct.discription = this.productForm.value["discription"]
+    this.editproduct.Category = this.productForm.value["Category"]
+    this.editproduct.quantity = this.productForm.value["quantity"]
+    this.editproduct.brand = this.productForm.value["brand"]
+    this.editproduct.price = this.productForm.value["price"]
+    console.log(this.editproduct)
     this.api.updateProduct(this.editproduct).subscribe({
       next: (res) => {
         console.log(res)
-       // alert("Product updated Successfully");
-       this.toastr.success("Product has been updated Successfully")
+        // alert("Product updated Successfully");
+        this.toastr.success("Product has been updated Successfully")
         this.productForm.reset();
         this.dialogRef.close('Update');
       },

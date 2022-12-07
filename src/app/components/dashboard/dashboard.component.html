@@ -5,27 +5,27 @@
       <!-- <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
         style="width: 100%; height: 100%; display: block;"></highcharts-chart> -->
 
-        <!-- <canvas mdbChart type="'bar'" datasets="datasets" labels="labels"></canvas> -->
-        <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>  
+      <!-- <canvas mdbChart type="'bar'" datasets="datasets" labels="labels"></canvas> -->
+      <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
 
 
 
 
 
 
-        <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards mt-5" >
-          <mat-card fxFlex="25">
-              <app-card label="Trainees" total={{userCount}}  [data]="cards"></app-card>
-          </mat-card>
-          <mat-card fxFlex="25">
-              <app-card label="Revenue" total={{revenueCount}}  [data]="cards"></app-card>
-          </mat-card>
-          <mat-card fxFlex="25">
-              <app-card label="Trainers" total={{trainerCount}}  [data]="cards"></app-card>
-          </mat-card>
-          <mat-card fxFlex="25">
-              <app-card label="Attendees" total={{attendeesCount}} [data]="cards"></app-card>
-          </mat-card>
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards mt-5">
+        <mat-card fxFlex="25">
+          <app-card label="Trainees" total={{userCount}} [data]="cards"></app-card>
+        </mat-card>
+        <mat-card fxFlex="25">
+          <app-card label="Revenue" total={{revenueCount}} [data]="cards"></app-card>
+        </mat-card>
+        <mat-card fxFlex="25">
+          <app-card label="Trainers" total={{trainerCount}} [data]="cards"></app-card>
+        </mat-card>
+        <mat-card fxFlex="25">
+          <app-card label="Attendees" total={{attendeesCount}} [data]="cards"></app-card>
+        </mat-card>
       </div>
     </div>
   </div>

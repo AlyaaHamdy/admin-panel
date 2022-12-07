@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class TrainerDetailsComponent implements OnInit {
 
 
-  constructor( @Inject(MAT_DIALOG_DATA) public user:any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public user: any) { }
 
   ngOnInit(): void {
   }

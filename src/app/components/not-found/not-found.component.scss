@@ -55,7 +55,7 @@ $color-wood-2: #410A09;
   @include centered;
   height: 300px;
   width: 500px;
-  
+
   &:after {
     @include position;
     content: "";

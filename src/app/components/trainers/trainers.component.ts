@@ -1,9 +1,9 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-import {MatDialog,MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TrainersDialogComponent } from '../trainers-dialog/trainers-dialog.component';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { TrainersService } from 'src/app/services/trainers.service';
 import { User } from 'src/app/model/user';
 import { TrainerDetailsComponent } from '../trainer-details/trainer-details.component';
@@ -19,15 +19,15 @@ import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 })
 export class TrainersComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstName', 'startDate','phoneNumber','action'];
+  displayedColumns: string[] = ['firstName', 'startDate', 'phoneNumber', 'action'];
   dataSource!: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   isloading = true;
-  
 
-  constructor(private dialog :MatDialog, private api:TrainersService,private toastr: ToastrService, private confirm: ConfirmDialogService) { }
+
+  constructor(private dialog: MatDialog, private api: TrainersService, private toastr: ToastrService, private confirm: ConfirmDialogService) { }
 
   ngOnInit(): void {
     this.isloading = true;
@@ -35,44 +35,44 @@ export class TrainersComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(TrainersDialogComponent,{
-     width:'30%'
-    }).afterClosed().subscribe(val=>{
+    this.dialog.open(TrainersDialogComponent, {
+      width: '30%'
+    }).afterClosed().subscribe(val => {
       console.log("done")
       //if(val==='save'){
-        this.getAllTrainers();
+      this.getAllTrainers();
       //}
     })
   }
 
-  getAllTrainers(){
+  getAllTrainers() {
     this.api.getTrainer().subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res)
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.api.getTrainer();
       },
-      error:(err)=>{
+      error: (err) => {
         // alert("Error has occured while feching the data!!! ")
         this.toastr.error("Error has occured while feching the data")
       }
     })
 
   }
-  editTrainer(row:any){
-    this.dialog.open(TrainersDialogComponent,{
-      width:'30%',
-      data:row
-    }).afterClosed().subscribe(val=>{
+  editTrainer(row: any) {
+    this.dialog.open(TrainersDialogComponent, {
+      width: '30%',
+      data: row
+    }).afterClosed().subscribe(val => {
       //if(val==='update'){
-        this.getAllTrainers()
+      this.getAllTrainers()
       //}
     })
   }
-  
-  deleteTrainer(email:string){
+
+  deleteTrainer(email: string) {
     this.confirm.openConfirmDialog('Are you sure to delete this record ?').afterClosed().subscribe({
       next: (res) => {
         if (res) {
@@ -91,16 +91,16 @@ export class TrainersComponent implements OnInit {
     })
 
   }
-  assignedTrainee(trainer:any){
+  assignedTrainee(trainer: any) {
     console.log(trainer)
-    const dialogRef = this.dialog.open(AssignedTraineeComponent,{data:trainer});
+    const dialogRef = this.dialog.open(AssignedTraineeComponent, { data: trainer });
     dialogRef.afterClosed().subscribe(user => {
       //console.log(`Dialog result: ${user}`);
     });
   }
-  showDetails(user:any):any{
+  showDetails(user: any): any {
     console.log(user)
-    const dialogRef = this.dialog.open(TrainerDetailsComponent,{ width: '0',height:'0',data:user});
+    const dialogRef = this.dialog.open(TrainerDetailsComponent, { width: '0', height: '0', data: user });
 
     dialogRef.afterClosed().subscribe(user => {
       //console.log(`Dialog result: ${user}`);

@@ -12,7 +12,7 @@ import { NotificationService } from './../../services/notification.service';
 export class NotificationsComponent implements OnInit {
   displayedColumns: string[] = ['Message', 'SenderEmail', 'Date'];
   dataSource!: MatTableDataSource<any>;
-  constructor(private notificationService: NotificationService) {}
+  constructor(private notificationService: NotificationService) { }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   ngOnInit(): void {

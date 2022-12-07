@@ -5,7 +5,7 @@
             <mat-label>Trainee Name</mat-label>
             <input formControlName="firstName" matInput placeholder="Name">
         </mat-form-field>
-        <mat-form-field appearance="outline" >
+        <mat-form-field appearance="outline">
             <mat-label>Trainee Email</mat-label>
             <input formControlName="email" matInput placeholder="Email" [readonly]="editData">
         </mat-form-field>
@@ -27,22 +27,24 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-    
-    
-        <label for=""><h3>Trainee Gender</h3></label>
+
+
+        <label for="">
+            <h3>Trainee Gender</h3>
+        </label>
         <mat-radio-group formControlName="gender" class="example-radio-group">
             <mat-radio-button class="example-radio-button" *ngFor="let gender of genderList" [value]="gender">
                 {{gender}}
             </mat-radio-button>
         </mat-radio-group>
-        
+
         <!-- Phone number -->
         <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Telephone</mat-label>
             <span matPrefix> &nbsp;</span>
-            <input type="tel" matInput placeholder="555-555-1234"  formControlName="phoneNumber">
+            <input type="tel" matInput placeholder="555-555-1234" formControlName="phoneNumber">
             <mat-icon matSuffix>mode_edit</mat-icon>
-          </mat-form-field>
+        </mat-form-field>
 
 
 
@@ -59,8 +61,8 @@
             <textarea formControlName="comment" matInput placeholder="Text"></textarea>
         </mat-form-field> -->
     </div>
-    <div mat-dialog-action [align]="'end'" >
+    <div mat-dialog-action [align]="'end'">
         <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-        <button mat-raised-button style="margin-left:8px ;" color="primary" type="submit" >{{actionBtn}}</button>
+        <button mat-raised-button style="margin-left:8px ;" color="primary" type="submit">{{actionBtn}}</button>
     </div>
 </form>

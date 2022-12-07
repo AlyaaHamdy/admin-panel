@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Add Product</h1>
 <div mat-dialog-content>
-<form [formGroup]="productForm" enctype="multipart/form-data" style="z-index: 1;">
+    <form [formGroup]="productForm" enctype="multipart/form-data" style="z-index: 1;">
         <mat-form-field appearance="outline">
             <mat-label>Product Name</mat-label>
             <input formControlName="title" matInput placeholder="Product Name" [readonly]="editData">
@@ -14,20 +14,20 @@
             <mat-select formControlName="Category" placeholder="Category">
                 <mat-option value="Supplment">Supplment</mat-option>
                 <mat-option value="Accessory">Accessory</mat-option>
-               
+
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>quantity</mat-label>
             <input formControlName="quantity" matInput placeholder="quantity">
         </mat-form-field>
-    
-    
+
+
         <mat-form-field appearance="outline">
             <mat-label>Brand</mat-label>
             <input formControlName="brand" matInput placeholder="brand">
         </mat-form-field>
-        
+
         <mat-form-field appearance="outline">
             <mat-label>Price</mat-label>
             <input formControlName="price" matInput placeholder="price">
@@ -36,14 +36,15 @@
 
         <div class="form-group">
             <!-- <img [ngStyle]="{display:display}" width="100px" height="100px" src="http://localhost:8000/{{editData.image[0]}}"/> -->
-            <label *ngIf="!editproduct">Image</label>
-            <input *ngIf="!editproduct" class="form-control" formControlName="image" name="image" type="file" multiple (change)="AddImages($event)" placeholder="Select Image">
+            <label >Image</label>
+            <input class="form-control" formControlName="image" name="image" type="file" multiple
+                (change)="AddImages($event)" placeholder="Select Image">
         </div>
-        
+
     </form>
-    
+
 </div>
-<div mat-dialog-action [align]="'end'" >
+<div mat-dialog-action [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
     <button mat-raised-button style="margin-left:8px ;" color="primary" (click)="addProduct()">{{actionBtn}}</button>
 </div>

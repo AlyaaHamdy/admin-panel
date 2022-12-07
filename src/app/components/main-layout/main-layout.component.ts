@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainLayoutComponent implements OnInit {
   title = 'AdminDashboard';
-  sideBarOpen= true
+  sideBarOpen = true
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  sideBarToggler(){
+  sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
 }
